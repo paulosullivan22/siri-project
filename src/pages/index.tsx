@@ -56,6 +56,7 @@ const HomePage: any = () => {
                     const blob = new Blob(chunks, {'type': 'audio/ogg; codecs=opus'});
                     chunks = [];
                     const audioURL = window.URL.createObjectURL(blob);
+                    console.log(audioURL)
                     audio.src = audioURL;
                     console.log("recorder stopped");
 
@@ -68,17 +69,29 @@ const HomePage: any = () => {
                                 "enableWordTimeOffsets": false
                             },
                             "audio": {
-                                "uri":"gs://cloud-samples-tests/speech/brooklyn.flac"
+                                "uri": "gs://siri-project/test_name_1"
                             }}
 
-                        const res = fetch(`https://speech.googleapis.com/v1p1beta1/speech:recognize?key=${process.env.GATSBY_GOOGLE_API_KEY}`, {
+                        const res = fetch(`https://storage.googleapis.com/upload/storage/v1/b/siri-project/o?uploadType=media&name=test_name_1`, {
                             method: "POST",
                             headers: {
-                                'Content-Type': "application/json"
+                                "Authorization": `Bearer ${process.env.GATSBY_GOOGLE_API_AUTH_TOKEN}`,
+                                'Content-Type': "audio/ogg; codecs=opus"
+                            },
+                            body: blob
+                        })
+
+                        const speechRes = fetch(`https://speech.googleapis.com/v1p1beta1/speech:recognize?key=${process.env.GATSBY_GOOGLE_API_KEY}`, {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': "application/json",
+                                "Authorization": `Bearer ${process.env.GATSBY_GOOGLE_API_AUTH_TOKEN}`,
+
                             },
                             body: JSON.stringify(body)
                         })
                         console.log(res)
+                        console.log(speechRes)
 
                     } catch(err) {
                         console.log(err)
