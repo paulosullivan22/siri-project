@@ -15,7 +15,9 @@
   },
   "license": "0BSD",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "gatsby": "^2.26.1",
+    "gatsby-plugin-google-gapi": "^0.0.10",
     "gatsby-plugin-sass": "^2.8.0",
     "node-sass": "^5.0.0",
     "react": "^16.13.1",
