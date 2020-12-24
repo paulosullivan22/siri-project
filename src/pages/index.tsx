@@ -71,7 +71,7 @@ const HomePage: any = () => {
                                 "uri":"gs://cloud-samples-tests/speech/brooklyn.flac"
                             }}
 
-                        const res = fetch('https://speech.googleapis.com/v1p1beta1/speech:recognize?key=AIzaSyAPwtEQx1JWpo0XLdm0PWlpabNroCxfLN8', {
+                        const res = fetch(`https://speech.googleapis.com/v1p1beta1/speech:recognize?key=${process.env.GATSBY_GOOGLE_API_KEY}`, {
                             method: "POST",
                             headers: {
                                 'Content-Type': "application/json"
