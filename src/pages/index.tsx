@@ -11,6 +11,9 @@ const HomePage: any = () => {
     useEffect(() => {
         if (navigator.mediaDevices.getUserMedia) {
 
+            // window.gapi.load('auth2', function() {});
+            // console.log(window.gapi?.auth2?.getAuthInstance().signIn())
+
             const constraints = {audio: true};
             let chunks = [];
 
@@ -55,21 +58,24 @@ const HomePage: any = () => {
                     audio.controls = true;
                     const blob = new Blob(chunks, {'type': 'audio/ogg; codecs=opus'});
                     chunks = [];
-                    const audioURL = window.URL.createObjectURL(blob);
-                    console.log(audioURL)
-                    audio.src = audioURL;
-                    console.log("recorder stopped");
 
                     try {
                         let body: any = {
                             "config": {
-                                "encoding":"FLAC",
-                                "sampleRateHertz": 16000,
+                                // "encoding":"FLAC",
+                                // "sampleRateHertz": 16000,
+                                // "languageCode": "en-US",
+                                // "enableWordTimeOffsets": false
+
+                                "enableAutomaticPunctuation": true,
+                                "encoding": "LINEAR16",
                                 "languageCode": "en-US",
-                                "enableWordTimeOffsets": false
+                                "model": "command_and_search",
+                                "sampleRateHertz": 48000
                             },
                             "audio": {
-                                "uri": "gs://siri-project/test_name_1"
+                                // "content": ""
+                                "content": 'gs://siri-project/test_name_1'
                             }}
 
                         const res = fetch(`https://storage.googleapis.com/upload/storage/v1/b/siri-project/o?uploadType=media&name=test_name_1`, {
@@ -81,7 +87,7 @@ const HomePage: any = () => {
                             body: blob
                         })
 
-                        const speechRes = fetch(`https://speech.googleapis.com/v1p1beta1/speech:recognize?key=${process.env.GATSBY_GOOGLE_API_KEY}`, {
+                        const speechRes = fetch(`https://speech.googleapis.com/v1p1beta1/speech:recognize`, {
                             method: "POST",
                             headers: {
                                 'Content-Type': "application/json",
@@ -99,6 +105,8 @@ const HomePage: any = () => {
                 }
 
                 mediaRecorder.ondataavailable = function (e) {
+                    console.log(e.data)
+                    console.log(typeof e.data)
                     chunks.push(e.data);
                 }
             }
