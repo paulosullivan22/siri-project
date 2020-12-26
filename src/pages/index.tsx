@@ -106,7 +106,6 @@ const HomePage: any = () => {
 
                 mediaRecorder.ondataavailable = function (e) {
                     console.log(e.data)
-                    console.log(typeof e.data)
                     chunks.push(e.data);
                 }
             }
