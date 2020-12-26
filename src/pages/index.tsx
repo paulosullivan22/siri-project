@@ -1,9 +1,9 @@
 import * as React from "react"
 
+
 const HomePage: any = () => {
     const { useEffect } = React
 
-    console.log('test commit')
     const recordRef = document.getElementsByClassName('record')
     const stopRef = document.getElementsByClassName('stop')
     const soundClips = document.getElementsByClassName('.sound-clips')
