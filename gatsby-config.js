@@ -8,7 +8,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-sass',
-    'gatsby-plugin-workerize-loader',
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-google-gapi`,

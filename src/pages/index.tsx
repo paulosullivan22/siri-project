@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Helmet from 'react-helmet'
 
 const HomePage: any = () => {
   const { useEffect } = React
@@ -12,24 +11,9 @@ const HomePage: any = () => {
       const constraints = { audio: true }
       let chunks = []
 
-      // Add webworker here
-      const workerPath: any = '../../javascripts/audio.worker'
-      const worker = new Worker(workerPath)
-
-      worker.postMessage({ command: 'init ' })
-
-      console.log(worker)
-
       let onSuccess = function (stream) {
         console.log(stream)
         const mediaRecorder = new MediaRecorder(stream)
-
-        // worker.postMessage({ command: 'init', config: { sampleRate: stream } })
-
-        // worker.postMessage({
-        //   command: 'record',
-        //   buffer: [stream.inputBuffer.getChannelData(0), stream.inputBuffer.getChannelData(1)]
-        // })
 
         recordRef[0].onclick = function () {
           mediaRecorder.start()
@@ -43,14 +27,9 @@ const HomePage: any = () => {
 
         mediaRecorder.onstop = async function (e) {
           console.log(chunks)
-          const blob = new Blob(chunks, { type: 'audio/wav' })
+          const blob = new Blob(chunks, { type: 'audio/webm;codecs=opus' })
           chunks = []
           console.log(blob)
-
-          // worker.postMessage({
-          //   command: 'exportWAV',
-          //   type: 'audio/wav'
-          // })
 
           function getBase64EncodedAudio(blob: any) {
             return new Promise<any>((resolve: any, reject: any) => {
@@ -76,7 +55,7 @@ const HomePage: any = () => {
               // "enableWordTimeOffsets": false
 
               enableAutomaticPunctuation: true,
-              encoding: 'LINEAR16',
+              encoding: 'OGG_OPUS',
               languageCode: 'en-US',
               model: 'command_and_search',
               sampleRateHertz: 48000
@@ -124,7 +103,6 @@ const HomePage: any = () => {
   })
   return (
     <>
-      <Helmet></Helmet>
       <button className={'record'}>Record</button>
       <button className={'stop'}>Stop</button>
       <section className={'sound-clips'}></section>
