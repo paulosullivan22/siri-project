@@ -1,4 +1,5 @@
 import * as React from 'react'
+import MediaStreamRecorder from 'msr'
 
 const HomePage: any = () => {
   const { useEffect } = React
@@ -8,12 +9,16 @@ const HomePage: any = () => {
 
   useEffect(() => {
     if (navigator.mediaDevices.getUserMedia) {
-      const constraints = { audio: true }
-      let chunks = []
+      var mediaConstraints = {
+        audio: true
+      }
 
-      let onSuccess = function (stream) {
-        console.log(stream)
-        const mediaRecorder = new MediaRecorder(stream)
+      navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
+
+      function onMediaSuccess(stream) {
+        var mediaRecorder = new MediaStreamRecorder(stream)
+        mediaRecorder.audioChannels = 1
+        mediaRecorder.mimeType = 'audio/wav' // check this line for audio/wav
 
         recordRef[0].onclick = function () {
           mediaRecorder.start()
@@ -25,10 +30,8 @@ const HomePage: any = () => {
           console.log('recorder stopped')
         }
 
-        mediaRecorder.onstop = async function (e) {
-          console.log(chunks)
-          const blob = new Blob(chunks, { type: 'audio/webm;codecs=opus' })
-          chunks = []
+        mediaRecorder.ondataavailable = async function (blob) {
+          console.log('DATA AVAILABLE')
           console.log(blob)
 
           function getBase64EncodedAudio(blob: any) {
@@ -49,20 +52,14 @@ const HomePage: any = () => {
 
           let body: any = {
             config: {
-              // "encoding":"FLAC",
-              // "sampleRateHertz": 16000,
-              // "languageCode": "en-US",
-              // "enableWordTimeOffsets": false
-
               enableAutomaticPunctuation: true,
-              encoding: 'OGG_OPUS',
+              encoding: 'LINEAR16',
               languageCode: 'en-US',
               model: 'command_and_search',
-              sampleRateHertz: 48000
+              sampleRateHertz: 16000
             },
             audio: {
               content: formattedBase64Data
-              // "uri": 'gs://siri-project/test_name_1'
             }
           }
 
@@ -88,17 +85,11 @@ const HomePage: any = () => {
           })
           console.log(speechRes)
         }
-
-        mediaRecorder.ondataavailable = function (e) {
-          chunks.push(e.data)
-        }
       }
 
-      let onError = function (err) {
-        console.log('The following error occured: ' + err)
+      function onMediaError(e) {
+        console.error('media error', e)
       }
-
-      navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError)
     }
   })
   return (
