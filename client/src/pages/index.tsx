@@ -13,10 +13,6 @@ const HomePage: any = () => {
         audio: true
       }
 
-      // fetch('http://127.0.0.1:5000/hello')
-      //   .then((res) => res.json())
-      //   .then((res) => console.log(res))
-
       navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
 
       function onMediaSuccess(stream) {
@@ -51,7 +47,10 @@ const HomePage: any = () => {
           const base64data: any = await getBase64EncodedAudio(blob)
           const formattedBase64Data: any = base64data.split(',')[1]
 
-          fetch()
+          fetch(`${process.env.GATSBY_API_URL}/audio`, {
+            method: "POST",
+            body: formattedBase64Data
+          })
 
           let body: any = {
             config: {

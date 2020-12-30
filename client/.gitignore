@@ -1,5 +1,6 @@
 node_modules/
 client/.cache/
 public
-.env
+.env.develop
+.env.production
 client/.idea
