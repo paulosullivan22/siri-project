@@ -21,11 +21,17 @@ def audio():
         "Content-type": "audio/wav"
     }
 
-    r = requests.post(uri, data=encodedAudioFile, headers=headers)
+    r = requests.post(uri, data=encodedAudioFile, headers=headers).json()
 
-    print(r.json())
+    print(r)
 
-    return { "res": "hello world" }
+    content = r['text']
+#     intent = r['intents'][0]['name']
+
+    print(content)
+#     print(intent)
+
+    return { "content": content, "intent": '' }
 
 if __name__ == '__main__':
    app.run()
