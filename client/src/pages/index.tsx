@@ -49,7 +49,7 @@ const HomePage: any = () => {
 
           fetch(`${process.env.GATSBY_API_URL}/audio`, {
             method: "POST",
-            body: formattedBase64Data
+            body: blob
           })
 
           let body: any = {
@@ -97,15 +97,15 @@ const HomePage: any = () => {
           //   .then((res) => res.json())
           //   .then((res) => console.log(res))
 
-          const uri = 'https://api.wit.ai/speech'
-          const auth = 'Bearer ' + process.env.GATSBY_WIT_TOKEN
-          fetch(uri, {
-            method: 'POST',
-            headers: { Authorization: auth, 'Content-type': 'audio/wav' },
-            body: formattedBase64Data
-          })
-            .then((res) => res.json())
-            .then((res) => console.log(res))
+          // const uri = 'https://api.wit.ai/speech'
+          // const auth = 'Bearer ' + process.env.GATSBY_WIT_TOKEN
+          // fetch(uri, {
+          //   method: 'POST',
+          //   headers: { Authorization: auth, 'Content-type': 'audio/wav' },
+          //   body: formattedBase64Data
+          // })
+          //   .then((res) => res.json())
+          //   .then((res) => console.log(res))
 
           // const res = fetch('https://api.wit.ai/speech?client=chromium&lang=en-us&output=json', {
           //   method: 'GET',
