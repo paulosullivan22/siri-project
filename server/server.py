@@ -17,7 +17,7 @@ def audio():
     uri = 'https://api.wit.ai/speech'
 
     headers = {
-        "Authorization": 'Bearer LTDBCKGPIGINSZQ7HRN2B5ETJOOMTZUH',
+        "Authorization": 'Bearer ',
         "Content-type": "audio/wav"
     }
 
