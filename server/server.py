@@ -9,8 +9,7 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-SECRET_KEY = os.getenv("name")
-print(SECRET_KEY)
+WIT_TOKEN = os.getenv("WIT_TOKEN")
 
 @app.route("/audio", methods=['POST'])
 @cross_origin()
@@ -20,7 +19,7 @@ def audio():
     uri = 'https://api.wit.ai/speech'
 
     headers = {
-        "Authorization": 'Bearer ',
+        "Authorization": 'Bearer ' + WIT_TOKEN,
         "Content-type": "audio/wav"
     }
 
