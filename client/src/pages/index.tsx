@@ -9,6 +9,7 @@ import styles from './index.module.scss'
 const HomePage: React.FC = (): React.ReactElement => {
   const { useEffect } = React
 
+
   const recordRef: HTMLCollection = document.getElementsByClassName('record')
   const stopRef: HTMLCollection = document.getElementsByClassName('stop')
 
