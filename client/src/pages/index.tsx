@@ -1,14 +1,17 @@
 import * as React from 'react'
 import MediaStreamRecorder from 'msr'
 import cx from 'classnames'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
+import actions from '../store/actionCreators'
 import SpeechBox from "../components/SpeechBox";
 
 import styles from './index.module.scss'
 
-const HomePage: React.FC = (): React.ReactElement => {
+const HomePage: React.FC = ({ actions, dialog }: any): React.ReactElement => {
   const { useEffect } = React
-
+  const { addDialogAction } = actions
 
   const recordRef: HTMLCollection = document.getElementsByClassName('record')
   const stopRef: HTMLCollection = document.getElementsByClassName('stop')
@@ -36,11 +39,16 @@ const HomePage: React.FC = (): React.ReactElement => {
           console.log('recorder stopped')
         }
 
-        mediaRecorder.ondataavailable = function (blob) {
-          fetch(`${process.env.GATSBY_API_URL}/audio`, {
+        mediaRecorder.ondataavailable = async function (blob) {
+          const { content } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
             method: "POST",
             body: blob
-          })
+          }).then(res => res.json())
+
+          console.log("CONTENT")
+          console.log(content)
+
+          addDialogAction({ content })
         }
       }
 
@@ -49,9 +57,12 @@ const HomePage: React.FC = (): React.ReactElement => {
       }
     }
   })
+
+  console.log("DIALOG")
+  console.log(dialog)
   return (
     <div className={styles.container}>
-      <SpeechBox />
+      <SpeechBox dialog={dialog}/>
       <div>
         <button className={cx('record', styles.test)}>Record</button>
         <button className={'stop'}>Stop</button>
@@ -60,4 +71,17 @@ const HomePage: React.FC = (): React.ReactElement => {
   )
 }
 
-export default HomePage
+function mapStateToProps(state) {
+  return {
+    dialog: state.dialog
+  }
+}
+
+function mapDispatchToProps(dispatch: any): { actions: any } {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

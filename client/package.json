@@ -30,6 +30,7 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
-    "gatsby-plugin-workerize-loader": "^1.5.0"
+    "gatsby-plugin-workerize-loader": "^1.5.0",
+    "redux-devtools-extension": "^2.13.8"
   }
 }

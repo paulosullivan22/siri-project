@@ -1,15 +1,7 @@
 import { createStore as reduxCreateStore } from "redux"
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-const reducer = (state, action) => {
-    if (action.type === `INCREMENT`) {
-        return Object.assign({}, state, {
-            count: state.count + 1,
-        })
-    }
-    return state
-}
+import { reducer, initialState } from './reducer'
 
-const initialState = { count: 0 }
-
-const createStore = () => reduxCreateStore(reducer, initialState)
+const createStore = () => reduxCreateStore(reducer, initialState, composeWithDevTools())
 export default createStore
