@@ -2,13 +2,15 @@ import * as React from 'react'
 import MediaStreamRecorder from 'msr'
 import cx from 'classnames'
 
+import SpeechBox from "../components/SpeechBox";
+
 import styles from './index.module.scss'
 
-const HomePage: any = () => {
+const HomePage: React.FC = (): React.ReactElement => {
   const { useEffect } = React
 
-  const recordRef = document.getElementsByClassName('record')
-  const stopRef = document.getElementsByClassName('stop')
+  const recordRef: HTMLCollection = document.getElementsByClassName('record')
+  const stopRef: HTMLCollection = document.getElementsByClassName('stop')
 
   useEffect(() => {
     if (navigator.mediaDevices.getUserMedia && navigator.getUserMedia) {
@@ -33,7 +35,7 @@ const HomePage: any = () => {
           console.log('recorder stopped')
         }
 
-        mediaRecorder.ondataavailable = async function (blob) {
+        mediaRecorder.ondataavailable = function (blob) {
           fetch(`${process.env.GATSBY_API_URL}/audio`, {
             method: "POST",
             body: blob
@@ -47,11 +49,13 @@ const HomePage: any = () => {
     }
   })
   return (
-    <>
-      <button className={cx('record', styles.test)}>Record</button>
-      <button className={'stop'}>Stop</button>
-      <section className={'sound-clips'}></section>
-    </>
+    <div className={styles.container}>
+      <SpeechBox />
+      <div>
+        <button className={cx('record', styles.test)}>Record</button>
+        <button className={'stop'}>Stop</button>
+      </div>
+    </div>
   )
 }
 
