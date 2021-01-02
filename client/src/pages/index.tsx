@@ -10,8 +10,10 @@ import SpeechBox from "../components/SpeechBox";
 import styles from './index.module.scss'
 
 const HomePage: React.FC = ({ actions, dialog }: any): React.ReactElement => {
-  const { useEffect } = React
+  const { useEffect, useState } = React
   const { addDialogAction } = actions
+  const [withDialog, setWithDialog] = useState(false)
+  const key = withDialog ? 'withDiaglog' : 'withoutDialog'
 
   const recordRef: HTMLCollection = document.getElementsByClassName('record')
   const stopRef: HTMLCollection = document.getElementsByClassName('stop')
@@ -48,6 +50,7 @@ const HomePage: React.FC = ({ actions, dialog }: any): React.ReactElement => {
           console.log("CONTENT")
           console.log(content)
 
+          setWithDialog(true)
           addDialogAction({ content })
         }
       }
@@ -61,7 +64,7 @@ const HomePage: React.FC = ({ actions, dialog }: any): React.ReactElement => {
   console.log("DIALOG")
   console.log(dialog)
   return (
-    <div className={styles.container}>
+    <div className={styles.container} key={key}>
       <SpeechBox dialog={dialog}/>
       <div>
         <button className={cx('record', styles.test)}>Record</button>
