@@ -17,7 +17,7 @@ const DialogBox = ({ message }) => {
 
     return (
         <div ref={ref} className={cx(styles.container, { [styles.expanded]: isExpanded})} style={{ maxHeight: height }}>
-            <p>{message.content}</p>
+            <p className={styles.userPrompt}>{message.content}</p>
         </div>
     )
 }

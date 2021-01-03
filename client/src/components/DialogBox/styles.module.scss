@@ -1,10 +1,16 @@
 .container {
-  border: 1px solid lightgray;
   transition: 0.4s;
   opacity: 0;
+  margin-top: 7px;
+  margin-left: 5px;
 
   p {
-    margin: 0;
+    &.userPrompt {
+      border: 1px solid lightgray;
+      display: inline;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
   }
 
 
