@@ -33,12 +33,10 @@ const HomePage: React.FC = ({ actions, dialog }: any): React.ReactElement => {
 
         recordRef[0].onclick = function () {
           mediaRecorder.start(10000)
-          console.log('recorder started')
         }
 
         stopRef[0].onclick = function () {
           mediaRecorder.stop()
-          console.log('recorder stopped')
         }
 
         mediaRecorder.ondataavailable = async function (blob) {
@@ -46,9 +44,6 @@ const HomePage: React.FC = ({ actions, dialog }: any): React.ReactElement => {
             method: "POST",
             body: blob
           }).then(res => res.json())
-
-          console.log("CONTENT")
-          console.log(content)
 
           setWithDialog(true)
           addDialogAction({ content })
@@ -61,8 +56,6 @@ const HomePage: React.FC = ({ actions, dialog }: any): React.ReactElement => {
     }
   })
 
-  console.log("DIALOG")
-  console.log(dialog)
   return (
     <div className={styles.container} key={key}>
       <SpeechBox dialog={dialog}/>

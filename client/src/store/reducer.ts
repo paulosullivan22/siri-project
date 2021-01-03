@@ -1,6 +1,6 @@
 import { ADD_DIALOG } from "./constants";
 
-export const initialState = { dialog: {} }
+export const initialState = { dialog: [] }
 
 export const reducer = (state, action) => {
     const { type, payload } = action
@@ -8,7 +8,10 @@ export const reducer = (state, action) => {
         case ADD_DIALOG: {
             return {
                 ...state,
-                payload
+                dialog: [
+                    ...state.dialog,
+                    payload
+                ]
             }
         }
 
