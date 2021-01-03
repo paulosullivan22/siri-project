@@ -7,9 +7,11 @@ import styles from './styles.module.scss'
 const SpeechBox: any = ({ dialog }) => {
     return (
         <div className={styles.container}>
-            {dialog.map(message => {
+            {dialog.map((message, index) => {
                 return (
-                    <DialogBox message={message} />
+                    <div className={styles.dialogContainer}>
+                        <DialogBox message={message} key={index} />
+                    </div>
                 )
             })}
         </div>

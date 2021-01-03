@@ -1,0 +1,14 @@
+.container {
+  border: 1px solid lightgray;
+  transition: 0.4s;
+  opacity: 0;
+
+  p {
+    margin: 0;
+  }
+
+
+  &.expanded {
+    opacity: 1;
+  }
+}
