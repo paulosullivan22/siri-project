@@ -1,1 +1,1 @@
-export const ADD_DIALOG = 'ADD_DIALOG'
+export const ADD_DIALOG: string = 'ADD_DIALOG'

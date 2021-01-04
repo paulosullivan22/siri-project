@@ -1,9 +1,10 @@
 import { ADD_DIALOG } from "./constants";
+import { IAction, IState } from './interfaces'
 
-export const initialState = { dialog: [] }
+export const initialState: IState = { dialog: [] }
 
-export const reducer = (state, action) => {
-    const { type, payload } = action
+export const reducer: (state: IState, action: IAction<object[]>) => IState = (state: IState, action: IAction<object[]>) => {
+    const { type, payload }: IAction<object[]> = action
     switch (type) {
         case ADD_DIALOG: {
             return {
@@ -14,8 +15,7 @@ export const reducer = (state, action) => {
                 ]
             }
         }
-
-        return state
+        default: 
+            return state
     }
-    return state
 }

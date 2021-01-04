@@ -37,3 +37,6 @@ def audio():
 
 if __name__ == '__main__':
    app.run()
+
+
+# FLASK_APP=server.py FLASK_ENV=development flask run
