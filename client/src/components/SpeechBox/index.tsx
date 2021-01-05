@@ -4,10 +4,14 @@ import DialogBox from '../DialogBox'
 
 import styles from './styles.module.scss'
 
-const SpeechBox: any = ({ dialog }) => {
+interface IProps {
+    dialog: object[]
+}
+
+const SpeechBox: React.FC<IProps> = ({ dialog }: IProps) => {
     return (
         <div className={styles.container}>
-            {dialog.map((message, index) => {
+            {dialog.map((message: object, index: number) => {
                 return (
                     <div className={styles.dialogContainer}>
                         <DialogBox message={message} key={index} />

@@ -1,13 +1,14 @@
 import * as React from 'react'
+import { Dispatch, SetStateAction, RefObject } from "react";
 import cx from 'classnames'
 
 import styles from './styles.module.scss'
 
 const DialogBox = ({ message }) => {
     const { useState, useEffect, useRef } = React
-    const [isExpanded, setExpanded] = useState(false)
-    const ref: any = useRef(null)
-    const height = isExpanded ? `${ref?.current?.scrollHeight}px` : '0px'
+    const [isExpanded, setExpanded]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
+    const ref: RefObject<HTMLDivElement | null> = useRef(null)
+    const height: string = isExpanded ? `${ref?.current?.scrollHeight}px` : '0px'
 
 
     useEffect(() => {
