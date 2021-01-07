@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Dispatch, SetStateAction } from "react";
 import MediaStreamRecorder from 'msr'
-import cx from 'classnames'
 import { bindActionCreators, Dispatch as reduxDispatch } from 'redux'
 import { connect } from 'react-redux'
 
@@ -30,8 +29,8 @@ const HomePage: React.FC<Props> = ({ actions, dialog }: Props): React.ReactEleme
   const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
   const key: string = withDialog ? 'withDialog' : 'withoutDialog'
 
-  const recordRef: HTMLCollection = document.getElementsByClassName('record')
-  const stopRef: HTMLCollection = document.getElementsByClassName('stop')
+  const recordRef: HTMLCollectionOf<Element> = document.getElementsByClassName('record')
+  const stopRef: HTMLCollectionOf<Element> = document.getElementsByClassName('stop')
 
   useEffect(() => {
     if (navigator.mediaDevices.getUserMedia && navigator.getUserMedia) {
@@ -39,43 +38,43 @@ const HomePage: React.FC<Props> = ({ actions, dialog }: Props): React.ReactEleme
         audio: true
       }
 
-      navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
-
-      function onMediaSuccess(stream: MediaStream): void {
+      const onMediaSuccess: (stream: MediaStream) => void = (stream: MediaStream) => {
         const mediaRecorder = new MediaStreamRecorder(stream)
         mediaRecorder.audioChannels = 1
         mediaRecorder.mimeType = 'audio/wav'
 
-        recordRef[0].onclick = function () {
+        recordRef[0].onclick = (): void => {
           mediaRecorder.start(10000)
         }
 
-        stopRef[0].onclick = function () {
+        stopRef[0].onclick = (): void => {
           mediaRecorder.stop()
         }
 
-        mediaRecorder.ondataavailable = async function (blob) {
+        mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
           const { content } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
             method: "POST",
             body: blob
-          }).then(res => res.json())
+          }).then((res: Response) => res.json())
 
           setWithDialog(true)
           addDialogAction({ content })
         }
       }
 
-      function onMediaError(e) {
-        console.error('media error', e)
+      const onMediaError: (error: Error) => void = (error: Error) => {
+        console.error(error)
       }
+
+      navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
     }
   })
 
   return (
     <div className={styles.container} key={key}>
-      <SpeechBox dialog={dialog}/>
+      <SpeechBox dialog={dialog} />
       <div>
-        <button className={cx('record', styles.test)}>Record</button>
+        <button className={'record'}>Record</button>
         <button className={'stop'}>Stop</button>
       </div>
     </div>
