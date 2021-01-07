@@ -1,7 +1,7 @@
 import { ADD_DIALOG } from "./constants";
-import { IAction } from './interfaces'
+import { IAddDialogAction } from './interfaces'
 
-const addDialogAction: (payload: object) => IAction<object> = (payload: object) => {
+const addDialogAction: IAddDialogAction = (payload: object) => {
     return {
         type: ADD_DIALOG,
         payload

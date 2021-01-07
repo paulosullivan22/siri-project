@@ -6,3 +6,5 @@ export interface IAction<T> {
 export interface IState {
     dialog: object[]
 }
+
+export type IAddDialogAction = (payload: object) => IAction<object>
