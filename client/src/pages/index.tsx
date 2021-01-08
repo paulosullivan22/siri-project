@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Dispatch, SetStateAction } from "react";
 import MediaStreamRecorder from 'msr'
 import { bindActionCreators, Dispatch as reduxDispatch } from 'redux'
@@ -25,7 +25,6 @@ interface IStateProps {
 type Props = IStateProps & IDispatchProps
 
 const HomePage: React.FC<Props> = ({ actions, dialog }: Props): React.ReactElement => {
-  const { useEffect, useState } = React
   const { addDialogAction } = actions
   const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
   const key: string = withDialog ? 'withDialog' : 'withoutDialog'

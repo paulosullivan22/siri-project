@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/paulosullivan/.nvm/versions/node/v14.0.0/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add — save-dev redux-devtools-extension
+  /Users/paulosullivan/.nvm/versions/node/v14.0.0/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add @types/msr
 
 PATH: 
   /Users/paulosullivan/.nvm/versions/node/v14.0.0/bin:/Users/paulosullivan/.nvm/versions/node/v14.0.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/paulosullivan/repos/practice/siri-project-gatsby/node_modules/.bin:/Users/paulosullivan/.nvm/versions/node/v14.0.0/bin
@@ -14,14 +14,17 @@ Platform:
   darwin x64
 
 Trace: 
-  TypeError [ERR_UNESCAPED_CHARACTERS]: Request path contains unescaped characters
-      at new ClientRequest (_http_client.js:151:13)
-      at Object.request (https.js:310:10)
-      at Request.module.exports.Request.start (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141311:32)
-      at Request.module.exports.Request.end (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:142070:10)
-      at end (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141124:14)
-      at Immediate._onImmediate (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141138:7)
-      at processImmediate (internal/timers.js:456:21)
+  Error: https://registry.yarnpkg.com/@types%2fmsr: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:66988:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:140749:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141721:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141643:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (_stream_readable.js:1218:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
 
 npm manifest: 
   {
@@ -56,7 +59,8 @@ npm manifest:
       "redux": "^4.0.5"
     },
     "devDependencies": {
-      "gatsby-plugin-workerize-loader": "^1.5.0"
+      "gatsby-plugin-workerize-loader": "^1.5.0",
+      "redux-devtools-extension": "^2.13.8"
     }
   }
 
@@ -9777,6 +9781,11 @@ Lockfile:
     dependencies:
       indent-string "^2.1.0"
       strip-indent "^1.0.1"
+  
+  redux-devtools-extension@^2.13.8:
+    version "2.13.8"
+    resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.8.tgz#37b982688626e5e4993ff87220c9bbb7cd2d96e1"
+    integrity sha512-8qlpooP2QqPtZHQZRhx3x3OP5skEV1py/zUdMY28WNAocbafxdG2tRD1MWE7sp8obGMNYuLWanhhQ7EQvT1FBg==
   
   redux-thunk@^2.3.0:
     version "2.3.0"

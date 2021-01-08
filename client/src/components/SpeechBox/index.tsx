@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { FC } from 'react'
 
 import DialogBox from '../DialogBox'
 
@@ -8,7 +8,7 @@ interface IProps {
     dialog: object[]
 }
 
-const SpeechBox: React.FC<IProps> = ({ dialog }: IProps) => {
+const SpeechBox: FC<IProps> = ({ dialog }: IProps) => {
     return (
         <div className={styles.container}>
             {dialog.map((message: object, index: number) => {
