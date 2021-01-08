@@ -8,6 +8,7 @@ import { IState, IAddDialogAction } from "../store/interfaces";
 import actions from '../store/actionCreators'
 import SpeechBox from "../components/SpeechBox";
 import { IMediaConstraints } from './interfaces'
+import Buttons from '../components/Buttons'
 
 import styles from './index.module.scss'
 
