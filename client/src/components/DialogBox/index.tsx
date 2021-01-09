@@ -8,16 +8,16 @@ interface IProps {
     message: object
 }
 
-const DialogBox: FC<IProps> = ({ message }: IProps) => {
-    const [isExpanded, setExpanded]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
-    const ref: RefObject<HTMLDivElement | null> = useRef(null)
-    const height: string = isExpanded ? `${ref?.current?.scrollHeight}px` : '0px'
+type Ref = string | ((instance: HTMLElement | null) => void) | RefObject<HTMLDivElement> | null | undefined
 
+const DialogBox: FC<IProps> = ({ message }: IProps) => {
+    const [isExpanded, setExpanded]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
+    const ref: Ref = useRef(null)
+    const height: string = isExpanded ? `${ref?.current?.scrollHeight}px` : '0px'
 
     useEffect(() => {
         setExpanded(true)
     }, [])
-
 
     return (
         <div ref={ref} className={cx(styles.container, { [styles.expanded]: isExpanded})} style={{ maxHeight: height }}>

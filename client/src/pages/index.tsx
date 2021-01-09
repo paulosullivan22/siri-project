@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, ReactElement, useEffect, useState } from 'react'
 import { Dispatch, SetStateAction } from "react";
 import MediaStreamRecorder from 'msr'
 import { bindActionCreators, Dispatch as reduxDispatch } from 'redux'
@@ -24,9 +24,9 @@ interface IStateProps {
 
 type Props = IStateProps & IDispatchProps
 
-const HomePage: React.FC<Props> = ({ actions, dialog }: Props): React.ReactElement => {
+const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
   const { addDialogAction } = actions
-  const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
+  const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const key: string = withDialog ? 'withDialog' : 'withoutDialog'
 
   const recordRef: HTMLCollectionOf<Element> = document.getElementsByClassName('record')
@@ -76,6 +76,7 @@ const HomePage: React.FC<Props> = ({ actions, dialog }: Props): React.ReactEleme
       <div>
         <button className={'record'}>Record</button>
         <button className={'stop'}>Stop</button>
+        <Buttons />
       </div>
     </div>
   )

@@ -1,14 +1,15 @@
 import React, { FC } from 'react'
 
-import recordIcon from './assets/voice-record.jpeg'
-
 import styles from './styles.module.scss'
 
 const Buttons: FC = () => {
     return (
         <div className={styles.container}>
-            <button>
-                <img src={recordIcon} alt="record-icon" />
+            <button className={styles.record}>
+                <div className={styles.innerRecord} />
+            </button>
+            <button className={styles.stopRecord}>
+                <div className={styles.innerStopRecord} />
             </button>
         </div>
     )

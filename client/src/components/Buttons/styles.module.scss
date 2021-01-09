@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+
+  .record {
+    margin-right: 10px;
+  }
+
+  .record, .stopRecord {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+
+    .innerRecord {
+      width: 12px;
+      height: 12px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .innerStopRecord {
+      width: 12px;
+      height: 12px;
+      background-color: black;
+    }
+  }
+}
