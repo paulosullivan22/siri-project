@@ -1,13 +1,15 @@
 .container {
   display: flex;
+  margin-top: 10px;
 
   .record {
     margin-right: 10px;
   }
 
   .record, .stopRecord {
+    outline: none;
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1.5px solid black;
     width: 35px;
     height: 35px;
     display: flex;
@@ -18,7 +20,7 @@
     .innerRecord {
       width: 12px;
       height: 12px;
-      background-color: red;
+      background-color: #ff0000;
       border-radius: 50%;
     }
 
