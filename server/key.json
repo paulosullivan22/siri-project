@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "siri-project-299812",
+  "private_key_id": "c1ad201df3471390b667c216d5ae5fdfa997f322",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC3+YJXhWHUdikL\njR0NwAwPbMm1jrL0ECGWlCdQJ+XQ0zsZYYP+7puvNbcGpYpzU+Ltwt3EInPulfNu\n3qTIiucXdAaXcJ2j20G1xJGaCjjXY+qEhHKhDo3drNw7WifjkcFpahhtcyyS1mk5\n4C6B1NsgjqsnWHSw39Uj5Qd80LEUClNFAf0uHbK7wqWZgaLNeIN4+ocyruJy4Wu+\nSXbALb1LMQygAGc27kagqhbfo+OcDiH5lsnQOrti0DreUIXbpcexwNxmtITYOFq3\nqfG0N9e+dUSSLasrbtK03s2uwHR2pAObU2PjzarZNdtNYhoHtwPzoPPXQ+YoIbOK\nsdfolvalAgMBAAECggEAG0K2hJ94CpJjrJmBV5tAbjyxetylObL2NyjG1oLC8/mI\nxU8Ezw6uNP0hnLOE22fvtUltsPVl9lFz29bT1f93FKuVmnUOdswzZWq2JHwlRg1B\nH9e8YI8WiGVn0MegJ4Fehm85JWaukSeCOhg06/oNajqZs9/QkrDoFUSHooAN7SkG\nMsp2BB+id/Aj9UqSveKz78DWMA9D6IxebOm0K1AU/0jRIOieNfJUbpUqrrKnjae2\nNE1ufqCRs2/GHT+p1W+yq6DLhT44x9jeoOIChVElxj68A2/hTTYKEDqY2HiAZp80\nCM6GOoyKaQW7LCccbdFqo1ph0fqj+s2gwvKnjLFuIQKBgQDaLHIXf2QBOwV9MbB9\nv8ZLeQ6MTonfZmu5/8MdUUE9vVmo93iWe02YNH7sXHzhV+OKEp03pneNCF6MpD+0\nWFGa1n8xPQTbA20K0tfgD8VbZX8yCaPmpnXZeFnoJnilFyI0ltFVVkdd9dmY+C3e\n8IK7jluPI6xjNJQWhJ1CQkfdiQKBgQDX3yeq4VKuloYrc76wyR4EXwPWzfZaLfVW\n0JRK6FBFDCVbVdBOrMxM3A8VbShfgAA1C37jYelYKb2/Ekqgtu5qZx7JtxkVdwIG\n2gWRwJxEUXYGqn66mt7J/Sd33X/OV3ole/caQWyLvw5vC6xfcg0fl/AicdVOCAvz\nbDi9a6eFPQKBgGyFxS6pAD6YdC+FAuxZ8zHhgnoKKwyDrrwzW4N+wnwKbsncZxA7\nPyqhmizKCJgylo08mxVuaXMuoZFFtiZn9BeX8Ga2mm6yso+6twTN83Z18yIZp3x4\nepB1DAus7z/3VN1h07imFRPI0bcEZBTL/8t5kVOPBBXItozI5ExsGcE5AoGAFTPo\n7ILHITjNotTyhOCsHxfKA74lFURwVX+VISpiP/XqcWcjV6bnRiFTJfKbxY2H963S\nX7kNN0iaR3sfc1ukXTUVtBBU2WPgAhZF98PoVVl+8zapzeBKQ6KmzsIlvHmhGK9t\nXNnSNIOmgkeuPY2xNkoxHuD5Z3mo2tblV82MHa0CgYBbWj4YGmJtgCXX4q1K+Sd3\nVrqCOEHyaoKzIYboZPflJjm1aCahsbQWQ62EL4L3qF8WHj5HXNrxV2QQPAncOaCa\n70k4/FDrXwVe5Wj+lYmBbVYRVG1oWMMB8Sn30RQjSIgjC5kMwGaEVzrFI1QMDJBx\n2//4HdVR9pMPIyE8MljBKw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "voice-translate@siri-project-299812.iam.gserviceaccount.com",
+  "client_id": "114084287342477774774",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/voice-translate%40siri-project-299812.iam.gserviceaccount.com"
+}
