@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-from google.cloud import speech
+from google.cloud import speech, language_v1
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -35,21 +35,8 @@ WIT_TOKEN = os.getenv("WIT_TOKEN")
 def audio():
 
     # Instantiates a client
-    client = speech.SpeechClient()
-
-    # The name of the audio file to transcribe
-#     gcs_uri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
-# {
-# //   config: {
-# //     enableAutomaticPunctuation: true,
-# //     encoding: 'LINEAR16',
-# //     languageCode: 'en-US',
-# //     model: 'command_and_search'
-# //   },
-# //   audio: {
-# //     content: formattedBase64Data
-# //   }
-
+    speech_to_text_client = speech.SpeechClient()
+    language_processing_client = language_v1.LanguageServiceClient()
 
     encodedAudioFile = request.data
     audio = speech.RecognitionAudio(content=encodedAudioFile)
@@ -61,10 +48,16 @@ def audio():
     )
 
     # Detects speech in the audio file
-    response = client.recognize(config=config, audio=audio)
+    response = speech_to_text_client.recognize(config=config, audio=audio)
 
-    print(response)
+    transcript = response.results[0].alternatives[0].transcript
 
+
+    document = language_v1.Document(content=transcript, type_=language_v1.Document.Type.PLAIN_TEXT)
+    sentiment = language_processing_client.analyze_sentiment(request={'document': document})
+
+    print("Text: {}".format(transcript))
+    print(sentiment)
     return {}
 
 #     for result in response.results:

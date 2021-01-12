@@ -4,11 +4,11 @@ import MediaStreamRecorder from 'msr'
 import { bindActionCreators, Dispatch as reduxDispatch } from 'redux'
 import { connect } from 'react-redux'
 
-import { IState, IAddDialogAction } from "../store/interfaces";
 import actions from '../store/actionCreators'
+import { IState, IAddDialogAction } from "../store/interfaces";
+import Buttons from '../components/Buttons'
 import SpeechBox from "../components/SpeechBox";
 import { IMediaConstraints } from './interfaces'
-import Buttons from '../components/Buttons'
 
 import styles from './index.module.scss'
 
@@ -52,22 +52,6 @@ const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
         }
 
         mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
-          function getBase64EncodedAudio(blob: any) {
-            return new Promise<any>((resolve: any, reject: any) => {
-              const reader = new FileReader()
-              let base64data: any = null
-              reader.readAsDataURL(blob)
-              reader.onloadend = () => {
-                base64data = reader.result
-                resolve(base64data)
-              }
-              return base64data
-            })
-          }
-
-          const base64data: any = await getBase64EncodedAudio(blob)
-          const formattedBase64Data: any = base64data.split(',')[1]
-
           const { content } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
             method: "POST",
             body: blob
@@ -78,7 +62,7 @@ const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
         }
       }
 
-      const onMediaError: (error: Error) => void = (error: Error) => {
+      const onMediaError: (error: MediaStreamError) => void = (error: MediaStreamError) => {
         console.error(error)
       }
 
@@ -90,8 +74,6 @@ const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
     <div className={styles.container} key={key}>
       <SpeechBox dialog={dialog} />
       <div>
-        {/*<button className={'record'}>Record</button>*/}
-        {/*<button className={'stop'}>Stop</button>*/}
         <Buttons />
       </div>
     </div>
