@@ -5,13 +5,13 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-from google.cloud import speech, language_v1
+from google.cloud import language_v1
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-WIT_TOKEN = os.getenv("WIT_TOKEN")
+# WIT_TOKEN = os.getenv("WIT_TOKEN")
 
 # Imports the Google Cloud client library
 # from google.cloud import language_v1
