@@ -35,25 +35,14 @@ WIT_TOKEN = os.getenv("WIT_TOKEN")
 def audio():
 
     # Instantiates a client
-    speech_to_text_client = speech.SpeechClient()
+    speech_to_text_client = Speech_to_text_client()
     language_processing_client = language_v1.LanguageServiceClient()
 
     encodedAudioFile = request.data
-    audio = speech.RecognitionAudio(content=encodedAudioFile)
-
-    config = speech.RecognitionConfig(
-        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-        sample_rate_hertz=16000,
-        language_code="en-US",
-    )
-
-    # Detects speech in the audio file
-    response = speech_to_text_client.recognize(config=config, audio=audio)
-
-    transcript = response.results[0].alternatives[0].transcript
+    transcribed_audio = speech_to_text_client.make_recognise(encodedAudioFile)
 
 
-    document = language_v1.Document(content=transcript, type_=language_v1.Document.Type.PLAIN_TEXT)
+    document = language_v1.Document(content=transcribed_audio, type_=language_v1.Document.Type.PLAIN_TEXT)
     sentiment = language_processing_client.analyze_sentiment(request={'document': document})
 
     print("Text: {}".format(transcript))
