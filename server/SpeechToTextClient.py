@@ -1,8 +1,8 @@
 from google.cloud import speech
 
 # Add speech client here
-class Speech_to_text_client():
-    def __init__():
+class SpeechToTextClient():
+    def __init__(self):
         self.client = speech.SpeechClient()
 
     def make_recognize(encoded_audio_file):

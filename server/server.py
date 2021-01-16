@@ -3,9 +3,13 @@ from flask_cors import CORS, cross_origin
 import requests
 import os
 from dotenv import load_dotenv
+
+from SpeechToTextClient import SpeechToTextClient
+from LangProcessingClient import LangProcessingClient
+
 load_dotenv()
 
-from google.cloud import language_v1
+# from google.cloud import language_v1
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -34,20 +38,15 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @cross_origin()
 def audio():
 
-    # Instantiates a client
-    speech_to_text_client = Speech_to_text_client()
-    language_processing_client = language_v1.LanguageServiceClient()
+    # Instantiating clients
+    speech_to_text_client = SpeechToTextClient()
+    language_processing_client = LangProcessingClient()
 
     encodedAudioFile = request.data
-    transcribed_audio = speech_to_text_client.make_recognise(encodedAudioFile)
+    transcribed_audio = SpeechToTextClient.make_recognise(encodedAudioFile)
 
-
-    document = language_v1.Document(content=transcribed_audio, type_=language_v1.Document.Type.PLAIN_TEXT)
-    sentiment = language_processing_client.analyze_sentiment(request={'document': document})
-
-    print("Text: {}".format(transcript))
-    print(sentiment)
-    return {}
+    document = language_processing_client.make_document(transcribed_audio)
+    sentiment = language_processing_client.make_recognise(document)
 
 #     for result in response.results:
 #         print("Transcript: {}".format(result.alternatives[0].transcript))
