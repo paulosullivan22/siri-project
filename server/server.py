@@ -42,11 +42,16 @@ def audio():
     speech_to_text_client = SpeechToTextClient()
     language_processing_client = LangProcessingClient()
 
-    encodedAudioFile = request.data
-    transcribed_audio = SpeechToTextClient.make_recognise(encodedAudioFile)
+    encoded_audio_file = request.data
+    transcribed_audio = speech_to_text_client.make_recognize(encoded_audio_file)
 
     document = language_processing_client.make_document(transcribed_audio)
-    sentiment = language_processing_client.make_recognise(document)
+    sentiment = language_processing_client.make_processing(document)
+
+    return {
+        "transcribed_audio": transcribed_audio,
+        "sentiment": sentiment
+    }
 
 #     for result in response.results:
 #         print("Transcript: {}".format(result.alternatives[0].transcript))
