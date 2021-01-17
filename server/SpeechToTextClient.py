@@ -1,6 +1,5 @@
 from google.cloud import speech
 
-# Add speech client here
 class SpeechToTextClient:
     def __init__(self):
         self.client = speech.SpeechClient()

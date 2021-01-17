@@ -1,5 +1,3 @@
-# Add language processing client here
-
 from google.cloud import language_v1
 
 class LangProcessingClient:
