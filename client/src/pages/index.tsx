@@ -26,6 +26,7 @@ type Props = IStateProps & IDispatchProps
 
 const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
   const { addDialogAction } = actions
+  const [isRecording, setRecordingState]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const key: string = withDialog ? 'withDialog' : 'withoutDialog'
 
@@ -44,10 +45,12 @@ const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
         mediaRecorder.mimeType = 'audio/wav'
 
         recordRef[0].onclick = (): void => {
+          setRecordingState(true)
           mediaRecorder.start(10000)
         }
 
         stopRef[0].onclick = (): void => {
+          setRecordingState(false)
           mediaRecorder.stop()
         }
 
@@ -74,7 +77,7 @@ const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
     <div className={styles.container} key={key}>
       <SpeechBox dialog={dialog} />
       <div>
-        <Buttons />
+        <Buttons isRecording={isRecording} />
       </div>
     </div>
   )

@@ -22,6 +22,15 @@
       height: 12px;
       background-color: #ff0000;
       border-radius: 50%;
+
+      &.isRecording {
+        animation: blinker 1s linear infinite;
+      }
+      @keyframes blinker {
+        50% {
+          opacity: 0;
+        }
+      }
     }
 
     .innerStopRecord {
