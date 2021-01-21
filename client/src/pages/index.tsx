@@ -45,16 +45,19 @@ const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
         mediaRecorder.mimeType = 'audio/wav'
 
         recordRef[0].onclick = (): void => {
-          setRecordingState(true)
           mediaRecorder.start(10000)
+          // setRecordingState(true)
         }
 
         stopRef[0].onclick = (): void => {
-          setRecordingState(false)
           mediaRecorder.stop()
+          // setRecordingState(false)
+          console.log("STOP CLICK")
+
         }
 
         mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
+          console.log("DATA AVAILABLE")
           const { content } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
             method: "POST",
             body: blob
