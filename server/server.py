@@ -32,31 +32,6 @@ def audio():
 #         "sentiment": sentiment
     }
 
-#     for result in response.results:
-#         print("Transcript: {}".format(result.alternatives[0].transcript))
-#         return { response: result.alternatives[0].transcript }
-
-#     encodedAudioFile = request.data
-#
-#     uri = 'https://api.wit.ai/speech'
-#
-#     headers = {
-#         "Authorization": 'Bearer ' + WIT_TOKEN,
-#         "Content-type": "audio/wav"
-#     }
-#
-#     r = requests.post(uri, data=encodedAudioFile, headers=headers).json()
-#
-#     print(r)
-#
-#     content = r['text']
-# #     intent = r['intents'][0]['name']
-#
-#     print(content)
-# #     print(intent)
-#
-#     return { "content": content, "intent": '' }
-
 if __name__ == '__main__':
    app.run()
 
