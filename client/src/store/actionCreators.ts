@@ -1,5 +1,5 @@
-import { ADD_DIALOG } from "./constants";
-import { IAddDialogAction } from './interfaces'
+import { ADD_DIALOG, SET_SPEECH_BOX_EXPANDED_STATE } from "./constants";
+import { IAddDialogAction, ISetSpeechBoxExpandedAction } from './interfaces'
 
 const addDialogAction: IAddDialogAction = (payload: object) => {
     return {
@@ -8,6 +8,14 @@ const addDialogAction: IAddDialogAction = (payload: object) => {
     }
 }
 
+const setSpeechBoxExpandedState: ISetSpeechBoxExpandedAction = (payload: boolean) => {
+    return {
+        type: SET_SPEECH_BOX_EXPANDED_STATE,
+        payload
+    }
+}
+
 export default {
-    addDialogAction
+    addDialogAction,
+    setSpeechBoxExpandedState
 }

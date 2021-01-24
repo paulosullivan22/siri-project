@@ -4,18 +4,11 @@ import { bindActionCreators, Dispatch as reduxDispatch } from 'redux'
 import { connect } from 'react-redux'
 
 import actions from '../store/actionCreators'
-import { IState, IAddDialogAction } from "../store/interfaces";
-import Buttons from '../components/Buttons'
+import { IState, IDispatchProps } from "../store/interfaces";
 import SpeechBox from "../components/SpeechBox";
 import { IMediaConstraints } from './interfaces'
 
 import styles from './index.module.scss'
-
-interface IDispatchProps {
-  actions: {
-    addDialogAction: IAddDialogAction
-  }
-}
 
 interface IStateProps {
   dialog: object[]
@@ -52,7 +45,6 @@ const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
           mediaRecorder.stop()
           // setRecordingState(false)
           console.log("STOP CLICK")
-
         }
 
         mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
@@ -77,12 +69,12 @@ const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
 
   return (
     <div className={styles.container} key={key}>
-      <SpeechBox dialog={dialog} />
+      <SpeechBox isRecording={isRecording} />
     </div>
   )
 }
 
-function mapStateToProps(state: IState): IState {
+function mapStateToProps(state: IState): Pick<IState, 'dialog'> {
   return {
     dialog: state.dialog
   }

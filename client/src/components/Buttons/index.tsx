@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 import styles from './styles.module.scss'
 
 interface IProps {
-    isRecording: any
+    isRecording: boolean
 }
 
 const Buttons: FC<IProps> = ({ isRecording }: IProps) => {

@@ -9,7 +9,7 @@
   .record, .stopRecord {
     outline: none;
     border-radius: 50%;
-    border: 1.5px solid black;
+    border: 1.5px solid lightgrey;
     width: 35px;
     height: 35px;
     display: flex;
@@ -20,7 +20,7 @@
     .innerRecord {
       width: 12px;
       height: 12px;
-      background-color: #ff0000;
+      background-color: #da6a4e;
       border-radius: 50%;
 
       &.isRecording {
@@ -36,7 +36,7 @@
     .innerStopRecord {
       width: 12px;
       height: 12px;
-      background-color: black;
+      background-color: lightgrey;
     }
   }
 }
