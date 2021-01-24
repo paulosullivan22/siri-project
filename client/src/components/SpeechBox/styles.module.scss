@@ -4,8 +4,14 @@
   border-radius: 20px;
   width: 60px;
   height: 60px;
-  background: #f0f0f0;
-  border: 1px solid lightgrey;
+  background: #f8f8f8;
+
+  .buttonsContainer {
+    * {
+      transition-delay: 2s;
+      max-height: 0;
+    }
+  }
 
   &:active {
     box-shadow:  0 0 0 #cccccc,
@@ -16,6 +22,13 @@
 
   &.isExpanded {
     animation: anime 3s cubic-bezier(0, 1, 0, 1) forwards;
+
+    .buttonsContainer {
+      * {
+
+        max-height: none;
+      }
+    }
   }
 }
 

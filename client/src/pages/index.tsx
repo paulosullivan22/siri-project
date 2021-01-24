@@ -78,9 +78,6 @@ const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
   return (
     <div className={styles.container} key={key}>
       <SpeechBox dialog={dialog} />
-      <div>
-        <Buttons isRecording={isRecording} />
-      </div>
     </div>
   )
 }
