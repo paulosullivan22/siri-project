@@ -19,18 +19,20 @@ type Props = IProps & IDispatchProps & IState
 const SpeechBox: FC<Props> = ({ actions, dialog, isRecording, isSpeechBoxExpanded }: Props) => {
     const { setSpeechBoxExpandedState }: IActionCreators = actions
 
+    console.log(isSpeechBoxExpanded)
+
     return (
         <div className={cx(styles.container, { [styles.isExpanded]: isSpeechBoxExpanded})} onClick={() => setSpeechBoxExpandedState(true)}>
-            <div className={cx(styles.buttonsContainer, { [styles.isExpanded]: isSpeechBoxExpanded})}>
-                <Buttons isRecording={isRecording} />
-            </div>
             {dialog.map((message: object, index: number) => {
                 return (
-                    <div className={styles.dialogContainer}>
-                        <DialogBox message={message} key={index} />
+                    <div className={styles.dialogContainer} key={index}>
+                        <DialogBox message={message} />
                     </div>
                 )
             })}
+            <div className={cx(styles.buttonsContainer, { [styles.isExpanded]: isSpeechBoxExpanded})}>
+                <Buttons isRecording={isRecording} />
+            </div>
         </div>
     )
 }

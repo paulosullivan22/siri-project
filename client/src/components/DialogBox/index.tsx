@@ -21,7 +21,7 @@ const DialogBox: FC<IProps> = ({ message }: IProps) => {
 
     return (
         <div ref={ref} className={cx(styles.container, { [styles.expanded]: isExpanded})} style={{ maxHeight: height }}>
-            <p className={styles.userPrompt}>{message.transcribed_audio}</p>
+            <p className={styles.userPrompt}>{message.content}</p>
         </div>
     )
 }
