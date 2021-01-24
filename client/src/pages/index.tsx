@@ -1,5 +1,4 @@
-import React, { FC, ReactElement, useEffect, useState } from 'react'
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, FC, ReactElement, SetStateAction, useEffect, useState } from 'react'
 import MediaStreamRecorder from 'msr'
 import { bindActionCreators, Dispatch as reduxDispatch } from 'redux'
 import { connect } from 'react-redux'

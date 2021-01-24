@@ -1,4 +1,5 @@
-import React, { FC } from 'react'
+import React, { Dispatch, FC, SetStateAction, useState } from 'react'
+import cx from 'classnames'
 
 import DialogBox from '../DialogBox'
 
@@ -9,8 +10,10 @@ interface IProps {
 }
 
 const SpeechBox: FC<IProps> = ({ dialog }: IProps) => {
+    const [isExpanded, setExpanded]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
+
     return (
-        <div className={styles.container}>
+        <div className={cx(styles.container, { [styles.isExpanded]: isExpanded})} onClick={() => setExpanded(true)}>
             {dialog.map((message: object, index: number) => {
                 return (
                     <div className={styles.dialogContainer}>
