@@ -5,12 +5,12 @@ import cx from 'classnames'
 import styles from './styles.module.scss'
 
 interface IProps {
-    message: object
+    content: object
 }
 
 type Ref = string | ((instance: HTMLElement | null) => void) | RefObject<HTMLDivElement> | null | undefined
 
-const DialogBox: FC<IProps> = ({ message }: IProps) => {
+const DialogBox: FC<IProps> = ({ content }: IProps) => {
     const [isExpanded, setExpanded]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
     const ref: Ref = useRef(null)
     const height: string = isExpanded ? `${ref?.current?.scrollHeight}px` : '0px'
@@ -21,7 +21,7 @@ const DialogBox: FC<IProps> = ({ message }: IProps) => {
 
     return (
         <div ref={ref} className={cx(styles.container, { [styles.expanded]: isExpanded})} style={{ maxHeight: height }}>
-            <p className={styles.userPrompt}>{message.content}</p>
+            <p className={styles.userPrompt}>{content.content}</p>
         </div>
     )
 }

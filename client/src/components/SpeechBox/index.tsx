@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction, useState } from 'react'
+import React, { FC } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch as reduxDispatch } from "redux";
 import cx from 'classnames'
@@ -19,14 +19,12 @@ type Props = IProps & IDispatchProps & IState
 const SpeechBox: FC<Props> = ({ actions, dialog, isRecording, isSpeechBoxExpanded }: Props) => {
     const { setSpeechBoxExpandedState }: IActionCreators = actions
 
-    console.log(isSpeechBoxExpanded)
-
     return (
         <div className={cx(styles.container, { [styles.isExpanded]: isSpeechBoxExpanded})} onClick={() => setSpeechBoxExpandedState(true)}>
-            {dialog.map((message: object, index: number) => {
+            {dialog.map((content: object, index: number) => {
                 return (
                     <div className={styles.dialogContainer} key={index}>
-                        <DialogBox message={message} />
+                        <DialogBox content={content} />
                     </div>
                 )
             })}

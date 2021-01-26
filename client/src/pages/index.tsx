@@ -16,7 +16,7 @@ interface IStateProps {
 
 type Props = IStateProps & IDispatchProps
 
-const HomePage: FC<Props> = ({ actions, dialog }: Props): ReactElement => {
+const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const { addDialogAction } = actions
   const [isRecording, setRecordingState]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)

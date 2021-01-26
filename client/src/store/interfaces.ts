@@ -4,7 +4,7 @@ export interface IAction<T> {
 }
 
 export interface IState {
-    dialog: object[]
+    dialog: {  }[]
     isSpeechBoxExpanded: boolean
 }
 
