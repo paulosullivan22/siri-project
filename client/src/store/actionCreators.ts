@@ -1,7 +1,7 @@
 import { ADD_DIALOG, SET_SPEECH_BOX_EXPANDED_STATE } from "./constants";
-import { IAddDialogAction, ISetSpeechBoxExpandedAction } from './interfaces'
+import { IAddDialogAction, IDialogContent, ISetSpeechBoxExpandedAction } from './interfaces'
 
-const addDialogAction: IAddDialogAction = (payload: object) => {
+const addDialogAction: IAddDialogAction = (payload: IDialogContent) => {
     return <const>{
         type: ADD_DIALOG,
         payload

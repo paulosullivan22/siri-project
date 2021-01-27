@@ -2,10 +2,12 @@ import React, { FC, useState, useEffect, useRef } from 'react'
 import { Dispatch, SetStateAction, RefObject } from "react";
 import cx from 'classnames'
 
+import { IDialogContent } from '../../store/interfaces'
+
 import styles from './styles.module.scss'
 
 interface IProps {
-    content: object
+    content: IDialogContent
 }
 
 type Ref = string | ((instance: HTMLElement | null) => void) | RefObject<HTMLDivElement> | null | undefined

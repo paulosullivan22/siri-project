@@ -3,8 +3,12 @@ export interface IAction<T> {
     payload: T
 }
 
+export interface IDialogContent {
+    content: string
+}
+
 export interface IState {
-    dialog: {  }[]
+    dialog: IDialogContent[]
     isSpeechBoxExpanded: boolean
 }
 
@@ -17,6 +21,6 @@ export interface IDispatchProps {
     actions: IActionCreators
 }
 
-export type IAddDialogAction = (payload: object) => IAction<object>
+export type IAddDialogAction = (payload: IDialogContent) => IAction<IDialogContent>
 
 export type ISetSpeechBoxExpandedAction = (payload: boolean) => IAction<boolean>

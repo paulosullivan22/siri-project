@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch as reduxDispatch } from "redux";
 import cx from 'classnames'
 
 import actions from '../../store/actionCreators'
-import { IActionCreators, IDispatchProps, IState } from "../../store/interfaces";
+import { IActionCreators, IDialogContent, IDispatchProps, IState } from "../../store/interfaces";
 import Buttons from "../Buttons";
 import DialogBox from '../DialogBox'
 
@@ -21,7 +21,7 @@ const SpeechBox: FC<Props> = ({ actions, dialog, isRecording, isSpeechBoxExpande
 
     return (
         <div className={cx(styles.container, { [styles.isExpanded]: isSpeechBoxExpanded})} onClick={() => setSpeechBoxExpandedState(true)}>
-            {dialog.map((content: object, index: number) => {
+            {dialog.map((content: IDialogContent, index: number) => {
                 return (
                     <div className={styles.dialogContainer} key={index}>
                         <DialogBox content={content} />
