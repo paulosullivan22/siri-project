@@ -4,7 +4,7 @@ import requests
 import os
 from dotenv import load_dotenv
 
-import WebScrapingClient
+from WebScrapingClient import WebScrapingClient
 from SpeechToTextClient import SpeechToTextClient
 
 load_dotenv()
@@ -19,6 +19,7 @@ def audio():
 
     # Instantiating clients
     speech_to_text_client = SpeechToTextClient()
+    web_scraping_client = WebScrapingClient()
 
     encoded_audio_file = request.data
     transcribed_audio = speech_to_text_client.make_recognize(encoded_audio_file)
