@@ -23,6 +23,7 @@ def audio():
 
     encoded_audio_file = request.data
     transcribed_audio = speech_to_text_client.make_recognize(encoded_audio_file)
+    web_scraping_client.make_request(transcribed_audio)
 
     return {
         "transcribed_audio": transcribed_audio,
