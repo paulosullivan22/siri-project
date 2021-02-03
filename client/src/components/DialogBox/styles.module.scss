@@ -9,18 +9,18 @@
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     margin: 0;
     line-height: 24px;
-    position:relative;
-    padding:10px 20px;
-    border-radius:25px;
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 25px;
 
     &.userPrompt {
-      color:white;
-      background:#0B93F6;
+      color :white;
+      background: var(--user-prompt-background);
     }
 
     &.responsePrompt {
-      background:#E5E5EA;
-      color:black;
+      background: var(--response-prompt-background);
+      color: black;
     }
   }
 

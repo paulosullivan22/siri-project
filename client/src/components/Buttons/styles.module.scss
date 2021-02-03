@@ -20,7 +20,7 @@
     .innerRecord {
       width: 12px;
       height: 12px;
-      background-color: #da6a4e;
+      background-color: var(--record-button);
       border-radius: 50%;
 
       &.isRecording {

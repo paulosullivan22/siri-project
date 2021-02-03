@@ -4,7 +4,7 @@
   width: 60px;
   height: 60px;
   padding: 8px 10px;
-  background: #f8f8f8;
+  background: var(--speech-box-background-collapsed);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -21,24 +21,25 @@
   }
 
   &:hover {
-    border: 1px solid #cccccc;
+    // NOTE: rename variable
+    border: 1px solid var(--dark-box-shadow);
   }
 
   &:active {
-    box-shadow:  0 0 0 #cccccc,
-      0 0 0 #ffffff,
-      10px 10px 10px #cccccc inset,
-      -10px -10px 10px #ffffff inset;
+    box-shadow:  0 0 0 var(--dark-box-shadow),
+      0 0 0 var(--light-box-shadow),
+      10px 10px 10px var(--dark-box-shadow) inset,
+      -10px -10px 10px var(--light-box-shadow) inset;
   }
 
   &.isExpanded {
     width: 480px;
     height: 240px;
-    background: #fafafa;
-    box-shadow:  40px 40px 40px #cccccc,
-      0 0 0 #ffffff,
-      0 0 0 #cccccc inset,
-      2px 2px 2px #ffffff inset;
+    background: var(--speech-box-background-expanded);
+    box-shadow:  40px 40px 40px var(--dark-box-shadow),
+      0 0 0 var(--light-box-shadow),
+      0 0 0 var(--dark-box-shadow) inset,
+      2px 2px 2px var(--light-box-shadow) inset;
 
     .buttonsContainer {
       * {

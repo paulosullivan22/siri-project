@@ -1,22 +1,51 @@
+:root {
+  --test-var: #006fff;
+  transition: 0.3s;
+
+  --background-color: #f0f0f0;
+  --speech-box-background-collapsed: #f8f8f8;
+  --speech-box-background-expanded: #fafafa;
+
+  --dark-box-shadow: #cccccc;
+  --light-box-shadow: #ffffff;
+
+  --user-prompt-background: #0B93F6;
+  --response-prompt-background: #E5E5EA;
+
+  --record-button: #da6a4e
+}
+
+:root.darkMode {
+  --test-var: red;
+
+  --background-color: #222831;
+  --speech-box-background-collapsed: #2d4059;
+  --speech-box-background-expanded: #2d4059;
+
+  --dark-box-shadow: #363333;
+  --light-box-shadow: #363333;
+
+  --record-button: #ff5722;
+}
+
+* {
+  transition: 0.3s;
+}
+
 body {
   margin: 0;
 }
 
-.container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
-  background-color: #f0f0f0;
-}
+  .container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    background-color: var(--background-color);
+  }
 
-
-:root {
-  --test-var: #006fff;
-}
-
-.button {
-  background-color: var(--test-var);
-}
+  .button {
+    background-color: var(--test-var);
+  }

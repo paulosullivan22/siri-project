@@ -26,7 +26,7 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const stopRef: HTMLCollectionOf<Element> = document.getElementsByClassName('stop')
 
   const changeRootCss: any = () => {
-    document.documentElement.style.setProperty('--test-var', '#ff4c4c')
+    document.documentElement.classList.toggle(styles.darkMode)
   }
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
 
   return (
     <div className={styles.container} key={key}>
-      <button className={styles.button} onClick={changeRootCss}>clicky clicky</button>
+      <button onClick={changeRootCss}>clicky clicky</button>
       <SpeechBox isRecording={isRecording} />
     </div>
   )
