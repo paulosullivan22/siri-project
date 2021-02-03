@@ -11,3 +11,12 @@ body {
   flex-flow: column;
   background-color: #f0f0f0;
 }
+
+
+:root {
+  --test-var: #006fff;
+}
+
+.button {
+  background-color: var(--test-var);
+}
