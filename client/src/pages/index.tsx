@@ -26,6 +26,7 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const stopRef: HTMLCollectionOf<Element> = document.getElementsByClassName('stop')
 
   const changeRootCss: any = () => {
+    console.log('clicky clicky')
     document.documentElement.classList.toggle(styles.darkMode)
   }
 
@@ -70,7 +71,10 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
 
   return (
     <div className={styles.container} key={key}>
-      <button onClick={changeRootCss}>clicky clicky</button>
+      <label className={styles.switch}>
+        <input type="checkbox" onClick={changeRootCss}/>
+          <span className={styles.slider}></span>
+      </label>
       <SpeechBox isRecording={isRecording} />
     </div>
   )
