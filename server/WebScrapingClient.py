@@ -19,6 +19,18 @@ class WebScrapingClient:
         soup = BeautifulSoup(html, 'html.parser')
 
         divs = soup.select("#search div.g")
+        accordions = soup.select('g-accordion-expander')
+        accordions2 = soup.select("#search g-accordion-expander.g")
+
+        for accordion in accordions:
+            results = accordion.select("div")
+            print('----')
+
+            if (len(results) >= 1):
+                span = results[0]
+                print(span.get_text())
+
+
         for div in divs:
             results = div.select("h3")
 

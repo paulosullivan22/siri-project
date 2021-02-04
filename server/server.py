@@ -36,3 +36,4 @@ if __name__ == '__main__':
 
 # source virtualenv/bin/activate
 # FLASK_APP=server.py FLASK_ENV=development flask run
+# export GOOGLE_APPLICATION_CREDENTIALS="key.json"
