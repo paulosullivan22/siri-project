@@ -18,6 +18,7 @@ type Props = IStateProps & IDispatchProps
 
 const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const { addDialogAction } = actions
+  // NOTE: check why this hook triggers infinite recording
   const [isRecording, setRecordingState]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const key: string = withDialog ? 'withDialog' : 'withoutDialog'
@@ -26,7 +27,6 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const stopRef: HTMLCollectionOf<Element> = document.getElementsByClassName('stop')
 
   const changeRootCss: any = () => {
-    console.log('clicky clicky')
     document.documentElement.classList.toggle(styles.darkMode)
   }
 
@@ -71,10 +71,10 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
 
   return (
     <div className={styles.container} key={key}>
-      <label className={styles.switch}>
-        <input type="checkbox" onClick={changeRootCss}/>
-          <span className={styles.slider}></span>
-      </label>
+      {/*<label className={styles.switch}>*/}
+      {/*  <input type="checkbox" onClick={changeRootCss}/>*/}
+      {/*    <span className={styles.slider}></span>*/}
+      {/*</label>*/}
       <SpeechBox isRecording={isRecording} />
     </div>
   )
