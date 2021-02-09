@@ -23,6 +23,7 @@ def audio():
 
     encoded_audio_file = request.data
     transcribed_audio = speech_to_text_client.make_recognize(encoded_audio_file)
+
     web_scraping_client.make_request(transcribed_audio)
 
     return {
@@ -35,5 +36,5 @@ if __name__ == '__main__':
 
 
 # source virtualenv/bin/activate
-# FLASK_APP=server.py FLASK_ENV=development flask run
 # export GOOGLE_APPLICATION_CREDENTIALS="key.json"
+# FLASK_APP=server.py FLASK_ENV=development flask run

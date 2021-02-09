@@ -19,12 +19,13 @@ class WebScrapingClient:
         soup = BeautifulSoup(html, 'html.parser')
 
         divs = soup.select("#search div.g")
-        accordions = soup.select('g-accordion-expander')
-        accordions2 = soup.select("#search g-accordion-expander.g")
+        accordions = soup.find_all("div", class_="related-question-pair")
 
         for accordion in accordions:
             results = accordion.select("div")
+            a = accordion.find_all("a", href=True)
             print('----')
+            print(accordion)
 
             if (len(results) >= 1):
                 span = results[0]
