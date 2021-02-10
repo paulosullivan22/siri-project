@@ -29,7 +29,7 @@ const SpeechBox: FC<Props> = ({ actions, dialog, isRecording, isSpeechBoxExpande
                 )
             })}
             <div className={cx(styles.buttonsContainer, { [styles.isExpanded]: isSpeechBoxExpanded})}>
-                <Buttons isRecording={isRecording} />
+                <Buttons isRecording={isRecording} isSpeechBoxExpanded={isSpeechBoxExpanded} />
             </div>
         </div>
     )
