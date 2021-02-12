@@ -1,8 +1,6 @@
 import urllib.request
 from bs4 import BeautifulSoup
 
-url = 'https://google.com/search?q=Where+can+I+get+the+best+coffee'
-
 class WebScrapingClient:
     def make_request(self, search_content):
         parsed_content = search_content.replace(' ', '+')
@@ -18,23 +16,26 @@ class WebScrapingClient:
 
         soup = BeautifulSoup(html, 'html.parser')
 
-        divs = soup.select("#search div.g")
-        accordions = soup.find_all("div", class_="related-question-pair")
+        links = soup.find_all("div", class_="yuRUbf")
 
-        for accordion in accordions:
-            results = accordion.select("div")
-            a = accordion.find_all("a", href=True)
-            print('----')
-            print(accordion)
+        for link in links:
+            a = link.findChildren("a" , href=True)
+            print(a)
+            print(a[0]['href'])
+            print(a[0].get_text())
+            print('---')
 
-            if (len(results) >= 1):
-                span = results[0]
-                print(span.get_text())
+#         children = question_pair.findChildren("a" , recursive=False)
+#         print(question_pair)
+#         for child in children:
+#             print(child)
 
-
-        for div in divs:
-            results = div.select("h3")
-
-            if (len(results) >= 1):
-                h3 = results[0]
-                print(h3.get_text())
+#         divs = soup.select("#search div.g")
+#         accordions = soup.select("g-accordion-expander")
+#
+#         for div in divs:
+#             results = div.select("h3")
+#
+#             if (len(results) >= 1):
+#                 h3 = results[0]
+#                 print(h3.get_text())
