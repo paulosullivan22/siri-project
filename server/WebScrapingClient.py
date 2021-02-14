@@ -25,13 +25,7 @@ class WebScrapingClient:
             print(a[0].get_text())
             print('---')
 
-#         children = question_pair.findChildren("a" , recursive=False)
-#         print(question_pair)
-#         for child in children:
-#             print(child)
-
 #         divs = soup.select("#search div.g")
-#         accordions = soup.select("g-accordion-expander")
 #
 #         for div in divs:
 #             results = div.select("h3")
