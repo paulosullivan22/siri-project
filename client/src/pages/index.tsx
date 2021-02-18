@@ -4,14 +4,14 @@ import { bindActionCreators, Dispatch as reduxDispatch } from 'redux'
 import { connect } from 'react-redux'
 
 import actions from '../store/actionCreators'
-import { IState, IDispatchProps } from "../store/interfaces";
+import { IState, IDispatchProps, IDialogContent } from "../store/interfaces";
 import SpeechBox from "../components/SpeechBox";
 import { IMediaConstraints } from './interfaces'
 
 import styles from './index.module.scss'
 
 interface IStateProps {
-  dialog: object[]
+  dialog: IDialogContent[]
 }
 
 type Props = IStateProps & IDispatchProps
@@ -26,9 +26,9 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const recordRef: HTMLCollectionOf<Element> = document.getElementsByClassName('record')
   const stopRef: HTMLCollectionOf<Element> = document.getElementsByClassName('stop')
 
-  const changeRootCss: () => void = () => {
-    document.documentElement.classList.toggle(styles.darkMode)
-  }
+  // const changeRootCss: () => void = () => {
+  //   document.documentElement.classList.toggle(styles.darkMode)
+  // }
 
   useEffect(() => {
     if (navigator.mediaDevices.getUserMedia && navigator.getUserMedia) {
