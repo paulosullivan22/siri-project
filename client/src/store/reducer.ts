@@ -4,7 +4,10 @@ import { Action } from './actionCreators'
 
 export const initialState: IState = { dialog: [], isSpeechBoxExpanded: false }
 
-export const reducer: (state: IState | undefined, action: IAction<IDialogContent> | IAction<boolean>) => IState = (state: IState = initialState, action: Action) => {
+export const reducer: (
+    state: IState | undefined,
+    action: Action
+    ) => IState = (state: IState = initialState, action: Action) => {
     const { type, payload } = action
     switch (type) {
         case ADD_DIALOG: {

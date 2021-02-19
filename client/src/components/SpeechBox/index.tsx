@@ -20,7 +20,10 @@ const SpeechBox: FC<Props> = ({ actions, dialog, isRecording, isSpeechBoxExpande
     const { setSpeechBoxExpandedState }: IActionCreators = actions
 
     return (
-        <div className={cx(styles.container, { [styles.isExpanded]: isSpeechBoxExpanded})} onClick={() => setSpeechBoxExpandedState(true)}>
+        <div
+            className={cx(styles.container, { [styles.isExpanded]: isSpeechBoxExpanded})}
+            onClick={() => setSpeechBoxExpandedState(true)}
+        >
             {dialog.map((content: IDialogContent, index: number) => {
                 return (
                     <div className={styles.dialogContainer} key={index}>
