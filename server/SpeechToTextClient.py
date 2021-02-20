@@ -14,6 +14,7 @@ class SpeechToTextClient:
 
         response = self.client.recognize(config=config, audio=processed_audio)
 
+        # TODO: remove log here
         print(response.results[0].alternatives[0].transcript)
         return response.results[0].alternatives[0].transcript
 
