@@ -10,8 +10,11 @@ from SpeechToTextClient import SpeechToTextClient
 load_dotenv()
 
 app = Flask(__name__)
+
+# Setting CORS rules
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+
 
 @app.route("/audio", methods=['POST'])
 @cross_origin()
@@ -32,8 +35,6 @@ def audio():
 
 if __name__ == '__main__':
    app.run()
-
-
 
 # source virtualenv/bin/activate
 # export GOOGLE_APPLICATION_CREDENTIALS="key.json"
