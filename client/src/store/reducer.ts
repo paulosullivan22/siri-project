@@ -1,5 +1,5 @@
 import { ADD_DIALOG, SET_SPEECH_BOX_EXPANDED_STATE } from "./constants";
-import { IAction, IDialogContent, IState} from './interfaces'
+import { IDialogContent, IState} from './interfaces'
 import { Action } from './actionCreators'
 
 export const initialState: IState = { dialog: [], isSpeechBoxExpanded: false }
