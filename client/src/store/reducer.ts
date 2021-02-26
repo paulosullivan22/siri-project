@@ -8,7 +8,7 @@ export const reducer: (
     state: IState | undefined,
     action: Action
     ) => IState = (state: IState = initialState, action: Action) => {
-    const { type, payload } = action
+    const { type, payload }: Action = action
     switch (type) {
         case ADD_DIALOG: {
             return {
