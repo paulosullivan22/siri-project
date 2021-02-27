@@ -1,11 +1,11 @@
-import * as React from "react"
+import React, { ReactElement } from "react"
 import { Provider } from "react-redux"
 import { Store } from 'redux'
 
 import createStore from './src/store/createStore'
 
 interface IProps {
-    element: React.ReactElement
+    element: ReactElement
 }
 
 export default ({ element }: IProps) => {
