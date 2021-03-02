@@ -1,0 +1,10 @@
+.idea
+
+client/node_modules/
+client/.cache/
+client/.env.develop
+client/.env.production
+client/.idea
+
+server/.env
+server/key.json
