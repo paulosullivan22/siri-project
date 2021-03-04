@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="note" content="environment=development"/><script>
+          var __plugin_google_gapi_initialized = new Proxy(
+            {},
+            {
+              get: (obj, prop) => {
+                return obj.hasOwnProperty(prop) ? obj[prop] : false
+              }
+            }
+          )
+        </script><script src="/socket.io/socket.io.js"></script></head><body><div id="___gatsby"></div><script>
+            function __plugin_google_gapi_init() {
+              function __plugin_google_gapi_auth_initClient() {
+                let discoveryURLs = [
+                  'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'
+                ]
+
+                let requestedScopes = [
+                  'openid',
+                  'profile',
+                  'email',
+                  'https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/devstorage.full_control'
+                ]
+
+                console.debug("Intializing GAPI client...")
+                gapi.client.init({
+                  apiKey: 'AIzaSyAPwtEQx1JWpo0XLdm0PWlpabNroCxfLN8',
+                  discoveryDocs: discoveryURLs,
+                  clientId: '77512555615-6ut3mfpt4u2hb4duj6br0in2oe2tjnqr.apps.googleusercontent.com',
+                  scope: requestedScopes.join(' '),
+                }).then(() => {
+                  console.log('Client initialized...')
+                  __plugin_google_gapi_initialized.client = true
+                  __plugin_google_gapi_initialized.auth2 = true
+                }).catch((error) => {
+                  console.log(error)
+                })
+              }
+
+              console.debug("Intializing GAPI lib...")
+              gapi.load('auth2:client', {
+                callback: __plugin_google_gapi_auth_initClient,
+                onerror: () => {console.error("gapi.load failed")},
+              })
+              __plugin_google_gapi_init = undefined
+            }
+          </script><script src="https://apis.google.com/js/api.js?onload=__plugin_google_gapi_init" async="" defer=""></script><script src="/polyfill.js" nomodule=""></script><script src="/commons.js"></script></body></html>

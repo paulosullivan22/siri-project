@@ -1,6 +1,0 @@
-node_modules/
-client/.cache/
-public
-.env.develop
-.env.production
-client/.idea
