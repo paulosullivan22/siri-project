@@ -5,8 +5,6 @@ import { Link } from "gatsby"
 const NotFoundPage = () => {
   return (
     <main>
-      <title>Not found</title>
-      <h1>Page not found</h1>
       <p>
         Sorry
         <span role="img" aria-label="Pensive emoji">
