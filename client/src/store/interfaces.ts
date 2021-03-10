@@ -3,8 +3,13 @@ export interface IAction<T> {
     payload: T
 }
 
+export interface ILink {
+    text: string
+    href: string
+}
+
 export interface IDialogContent {
-    links: string
+    links: ILink[]
 }
 
 export interface IState {

@@ -23,7 +23,7 @@ const DialogBox: FC<IProps> = ({ content }: IProps) => {
 
     return (
         <div ref={ref} className={cx(styles.container, { [styles.expanded]: isExpanded})} style={{ maxHeight: height }}>
-            <p className={styles.userPrompt}>{content.content}</p>
+            <p className={styles.userPrompt}>{content.text}</p>
         </div>
     )
 }
