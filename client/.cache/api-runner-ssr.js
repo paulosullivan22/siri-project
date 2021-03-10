@@ -1,7 +1,4 @@
 var plugins = [{
-      plugin: require('/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/gatsby-plugin-google-gapi/gatsby-ssr'),
-      options: {"plugins":[],"apiKey":"AIzaSyAPwtEQx1JWpo0XLdm0PWlpabNroCxfLN8","clientId":"77512555615-6ut3mfpt4u2hb4duj6br0in2oe2tjnqr.apps.googleusercontent.com","discoveryURLs":["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"],"scopes":["https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/devstorage.full_control"]},
-    },{
       plugin: require('/Users/paulosullivan/repos/practice/siri-project-gatsby/client/gatsby-ssr'),
       options: {"plugins":[]},
     }]

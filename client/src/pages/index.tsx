@@ -50,14 +50,16 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
         }
 
         mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
-          const { transcribed_audio } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
+          // TODO: check issue with env variables on Gatsby
+          const { links } = await fetch(`http://127.0.0.1:5000/audio`, {
             method: "POST",
             body: blob
           }).then((res: Response) => res.json())
 
 
+          console.log(links)
           setWithDialog(true)
-          addDialogAction({ content: transcribed_audio })
+          addDialogAction({ links })
         }
       }
 

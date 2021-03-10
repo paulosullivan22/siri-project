@@ -4,7 +4,7 @@ export interface IAction<T> {
 }
 
 export interface IDialogContent {
-    content: string
+    links: string
 }
 
 export interface IState {

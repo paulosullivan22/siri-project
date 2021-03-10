@@ -104,15 +104,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, exports, __webpack_require__) {
 
 var plugins = [{
-  plugin: __webpack_require__(/*! ./node_modules/gatsby-plugin-google-gapi/gatsby-ssr */ "./node_modules/gatsby-plugin-google-gapi/gatsby-ssr.js"),
-  options: {
-    "plugins": [],
-    "apiKey": "AIzaSyAPwtEQx1JWpo0XLdm0PWlpabNroCxfLN8",
-    "clientId": "77512555615-6ut3mfpt4u2hb4duj6br0in2oe2tjnqr.apps.googleusercontent.com",
-    "discoveryURLs": ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"],
-    "scopes": ["https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/devstorage.full_control"]
-  }
-}, {
   plugin: __webpack_require__(/*! ./gatsby-ssr */ "./gatsby-ssr.js"),
   options: {
     "plugins": []
@@ -766,49 +757,6 @@ function _unsupportedIterableToArray(o, minLen) {
   if (n === "Map" || n === "Set") return Array.from(o);
   if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Object(_babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(o, minLen);
 }
-
-/***/ }),
-
-/***/ "./node_modules/gatsby-plugin-google-gapi/gatsby-ssr.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/gatsby-plugin-google-gapi/gatsby-ssr.js ***!
-  \**************************************************************/
-/*! exports provided: onRenderBody */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onRenderBody", function() { return onRenderBody; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-"use strict;";
-
-
-var onRenderBody = function onRenderBody(_ref, _ref2) {
-  var setHeadComponents = _ref.setHeadComponents,
-      setPostBodyComponents = _ref.setPostBodyComponents;
-  var apiKey = _ref2.apiKey,
-      clientId = _ref2.clientId,
-      discoveryURLs = _ref2.discoveryURLs,
-      scopes = _ref2.scopes;
-  setHeadComponents( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-    key: "plugin-google-gapi",
-    dangerouslySetInnerHTML: {
-      __html: "\n          var __plugin_google_gapi_initialized = new Proxy(\n            {},\n            {\n              get: (obj, prop) => {\n                return obj.hasOwnProperty(prop) ? obj[prop] : false\n              }\n            }\n          )\n        "
-    }
-  }));
-  setPostBodyComponents( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-    key: "plugin-google-gapi",
-    dangerouslySetInnerHTML: {
-      __html: "\n            function __plugin_google_gapi_init() {\n              function __plugin_google_gapi_auth_initClient() {\n                let discoveryURLs = [\n                  '" + discoveryURLs.join(",\n                ") + "'\n                ]\n\n                let requestedScopes = [\n                  'openid',\n                  'profile',\n                  'email',\n                  '" + scopes.join(",\n                ") + "'\n                ]\n\n                console.debug(\"Intializing GAPI client...\")\n                gapi.client.init({\n                  apiKey: '" + apiKey + "',\n                  discoveryDocs: discoveryURLs,\n                  clientId: '" + clientId + "',\n                  scope: requestedScopes.join(' '),\n                }).then(() => {\n                  console.log('Client initialized...')\n                  __plugin_google_gapi_initialized.client = true\n                  __plugin_google_gapi_initialized.auth2 = true\n                }).catch((error) => {\n                  console.log(error)\n                })\n              }\n\n              console.debug(\"Intializing GAPI lib...\")\n              gapi.load('auth2:client', {\n                callback: __plugin_google_gapi_auth_initClient,\n                onerror: () => {console.error(\"gapi.load failed\")},\n              })\n              __plugin_google_gapi_init = undefined\n            }\n          "
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-    key: "plugin-google-gapi",
-    src: "https://apis.google.com/js/api.js?onload=__plugin_google_gapi_init",
-    async: true,
-    defer: true
-  })));
-};
 
 /***/ }),
 
@@ -30907,7 +30855,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var element = _ref.element;
   var store = Object(_src_store_createStore__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"], {
     store: store
   }, element);
 });
