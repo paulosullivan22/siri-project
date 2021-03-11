@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, useRef } from 'react'
 import { Dispatch, SetStateAction, RefObject } from "react";
 import cx from 'classnames'
 
-import { IDialogContent } from '../../store/interfaces'
+import { IDialogContent, ILink } from '../../store/interfaces'
 
 import styles from './styles.module.scss'
 
@@ -12,7 +12,7 @@ interface IProps {
 
 type Ref = string | ((instance: HTMLElement | null) => void) | RefObject<HTMLDivElement> | null | undefined
 
-const DialogBox: FC<IProps> = ({ content }: IProps) => {
+const DialogBox: FC<IProps> = ({ content: { audio, links} }: IProps) => {
     const [isExpanded, setExpanded]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
     const ref: Ref = useRef(null)
     const height: string = isExpanded ? `${ref?.current?.scrollHeight}px` : '0px'
@@ -22,9 +22,20 @@ const DialogBox: FC<IProps> = ({ content }: IProps) => {
     }, [])
 
     return (
-        <div ref={ref} className={cx(styles.container, { [styles.expanded]: isExpanded})} style={{ maxHeight: height }}>
-            <p className={styles.userPrompt}>{content.text}</p>
-        </div>
+        <>
+            <div ref={ref} className={cx(styles.container, { [styles.expanded]: isExpanded})} style={{ maxHeight: height }}>
+                <p className={styles.userPrompt}>{audio}</p>
+            </div>
+            {links.map((link: ILink) => {
+                return (
+                    <div ref={ref} className={cx(styles.container, { [styles.expanded]: isExpanded})} style={{ maxHeight: height }}>
+                        <a href={link.href}>
+                            <p className={styles.userPrompt}>{link.text}</p>
+                        </a>
+                    </div>
+                )
+            })}
+        </>
     )
 }
 

@@ -9,6 +9,7 @@ export interface ILink {
 }
 
 export interface IDialogContent {
+    audio: string
     links: ILink[]
 }
 
