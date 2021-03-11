@@ -28,9 +28,9 @@ const DialogBox: FC<IProps> = ({ content: { audio, links} }: IProps) => {
             </div>
             {links.map((link: ILink) => {
                 return (
-                    <div ref={ref} className={cx(styles.container, { [styles.expanded]: isExpanded})} style={{ maxHeight: height }}>
+                    <div ref={ref} className={cx(styles.container, { [styles.expanded]: isExpanded})} style={{ maxHeight: height }} key={link.href}>
                         <a href={link.href}>
-                            <p className={styles.userPrompt}>{link.text}</p>
+                            <p className={styles.responsePrompt}>{link.text}</p>
                         </a>
                     </div>
                 )
