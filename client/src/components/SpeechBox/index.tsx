@@ -19,8 +19,6 @@ type Props = IProps & IDispatchProps & IState
 const SpeechBox: FC<Props> = ({ actions, dialog, isRecording, isSpeechBoxExpanded }: Props) => {
     const { setSpeechBoxExpandedState }: IActionCreators = actions
 
-    console.log(dialog)
-
     return (
         <div
             className={cx(styles.container, { [styles.isExpanded]: isSpeechBoxExpanded})}
