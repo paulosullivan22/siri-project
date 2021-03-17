@@ -8,7 +8,7 @@ interface IProps {
     isSpeechBoxExpanded: boolean
 }
 
-const Buttons: FC<IProps> = ({ isRecording, isSpeechBoxExpanded }: IProps) => {
+const Buttons: FC<IProps> = ({ isRecording }: IProps) => {
     return (
         <div className={styles.container}>
             <button className={cx('record', styles.record)}>
