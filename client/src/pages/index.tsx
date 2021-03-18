@@ -66,7 +66,6 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
       const onMediaError: (error: MediaStreamError) => void = (error: MediaStreamError) => {
         console.error(error)
       }
-
       navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
     }
   })
