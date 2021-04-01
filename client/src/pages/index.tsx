@@ -19,7 +19,7 @@ type Props = IStateProps & IDispatchProps
 const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const { addDialogAction } = actions
   // NOTE: check why this hook triggers infinite recording
-  const [isRecording, setRecordingState]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
+  const [isRecording]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const key: string = withDialog ? 'withDialog' : 'withoutDialog'
 
