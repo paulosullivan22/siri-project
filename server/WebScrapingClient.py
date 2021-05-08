@@ -16,19 +16,10 @@ class WebScrapingClient:
         soup = BeautifulSoup(html, 'html.parser')
 
         links = soup.find_all("div", class_="yuRUbf")
+        result = []
 
         for link in links:
             a = link.findChildren("a" , href=True)
-            print(a)
-            print(a[0]['href'])
-            print(a[0].get_text())
-            print('---')
+            result.append({ "text": a[0].get_text(), "href": a[0]['href'] })
 
-#         divs = soup.select("#search div.g")
-#
-#         for div in divs:
-#             results = div.select("h3")
-#
-#             if (len(results) >= 1):
-#                 h3 = results[0]
-#                 print(h3.get_text())
+        return result

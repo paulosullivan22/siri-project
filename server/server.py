@@ -26,10 +26,17 @@ def audio():
     encoded_audio_file = request.data
     transcribed_audio = speech_to_text_client.make_recognize(encoded_audio_file)
 
-    web_scraping_client.make_request(transcribed_audio)
+    if transcribed_audio is None:
+        return {
+        "transcribed_audio": transcribed_audio,
+        "links": [],
+        }, 400
+
+    links = web_scraping_client.make_request(transcribed_audio)
 
     return {
         "transcribed_audio": transcribed_audio,
+        "links": links[:3],
     }
 
 if __name__ == '__main__':
