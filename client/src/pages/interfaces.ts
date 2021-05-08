@@ -1,3 +1,3 @@
 export interface IMediaConstraints {
-    audio: boolean
+  audio: boolean
 }

@@ -4,8 +4,8 @@ import { bindActionCreators, Dispatch as reduxDispatch } from 'redux'
 import { connect } from 'react-redux'
 
 import actions from '../store/actionCreators'
-import { IState, IDispatchProps, IDialogContent } from "../store/interfaces";
-import SpeechBox from "../components/SpeechBox";
+import { IState, IDispatchProps, IDialogContent } from '../store/interfaces'
+import SpeechBox from '../components/SpeechBox'
 import { IMediaConstraints } from './interfaces'
 
 import styles from './index.module.scss'
@@ -18,7 +18,6 @@ type Props = IStateProps & IDispatchProps
 
 const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const { addDialogAction } = actions
-  // NOTE: check why this hook triggers infinite recording
   const [isRecording, setIsRecording]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const key: string = withDialog ? 'withDialog' : 'withoutDialog'
@@ -52,12 +51,10 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
         mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
           console.log(process.env.GATSBY_API_URL)
           const { transcribed_audio, links } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
-            method: "POST",
+            method: 'POST',
             body: blob
           }).then((res: Response) => res.json())
 
-
-          console.log(links)
           setWithDialog(true)
           addDialogAction({ audio: transcribed_audio, links })
         }
@@ -73,8 +70,8 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   return (
     <div className={styles.container} key={key}>
       <label className={styles.switch}>
-       <input type="checkbox" onClick={changeRootCss}/>
-         <span className={styles.slider}></span>
+        <input type="checkbox" onClick={changeRootCss} />
+        <span className={styles.slider}></span>
       </label>
       <SpeechBox isRecording={isRecording} />
     </div>
@@ -92,6 +89,5 @@ function mapDispatchToProps(dispatch: reduxDispatch): IDispatchProps {
     actions: bindActionCreators(actions, dispatch)
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

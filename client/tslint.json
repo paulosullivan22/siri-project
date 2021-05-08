@@ -1,0 +1,35 @@
+{
+    "extends": ["tslint:latest", "tslint-config-prettier"],
+    "rules": {
+      "object-literal-sort-keys": false,
+      "variable-name": false,
+      "no-implicit-dependencies": [true, "dev"],
+      "max-classes-per-file": false,
+      "no-shadowed-variable": false,
+      "typedef": [
+        true,
+        "call-signature",
+        "parameter",
+        "arrow-parameter",
+        "property-declaration",
+        "variable-declaration",
+        "member-variable-declaration",
+        "array-destructuring"
+      ],
+      "strict-boolean-expressions": [
+        true,
+        "allow-null-union",
+        "allow-undefined-union",
+        "allow-string",
+        "allow-enum",
+        "allow-number"
+      ],
+      "no-magic-numbers": [
+        true,
+        {
+          "allowed-numbers": [0, 1, 2, -1]
+        }
+      ]
+    }
+  }
+  

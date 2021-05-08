@@ -1,6 +1,5 @@
-import { createStore as reduxCreateStore } from "redux"
+import { createStore as reduxCreateStore, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { Store } from 'redux'
 
 import { reducer, initialState } from './reducer'
 

@@ -1,30 +1,30 @@
 export interface IAction<T> {
-    type: string
-    payload: T
+  type: string
+  payload: T
 }
 
 export interface ILink {
-    text: string
-    href: string
+  text: string
+  href: string
 }
 
 export interface IDialogContent {
-    audio: string
-    links: ILink[]
+  audio: string
+  links: ILink[]
 }
 
 export interface IState {
-    dialog: IDialogContent[]
-    isSpeechBoxExpanded: boolean
+  dialog: IDialogContent[]
+  isSpeechBoxExpanded: boolean
 }
 
 export interface IActionCreators {
-    addDialogAction: IAddDialogAction
-    setSpeechBoxExpandedState: ISetSpeechBoxExpandedAction
+  addDialogAction: IAddDialogAction
+  setSpeechBoxExpandedState: ISetSpeechBoxExpandedAction
 }
 
 export interface IDispatchProps {
-    actions: IActionCreators
+  actions: IActionCreators
 }
 
 export type IAddDialogAction = (payload: IDialogContent) => IAction<IDialogContent>
