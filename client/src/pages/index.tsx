@@ -26,9 +26,9 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const recordRef: HTMLCollectionOf<Element> = document.getElementsByClassName('record')
   const stopRef: HTMLCollectionOf<Element> = document.getElementsByClassName('stop')
 
-  // const changeRootCss: () => void = () => {
-  //   document.documentElement.classList.toggle(styles.darkMode)
-  // }
+  const changeRootCss: () => void = () => {
+    document.documentElement.classList.toggle(styles.darkMode)
+  }
 
   useEffect(() => {
     if (navigator.mediaDevices.getUserMedia && navigator.getUserMedia) {
@@ -72,10 +72,10 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
 
   return (
     <div className={styles.container} key={key}>
-      {/*<label className={styles.switch}>*/}
-      {/*  <input type="checkbox" onClick={changeRootCss}/>*/}
-      {/*    <span className={styles.slider}></span>*/}
-      {/*</label>*/}
+      <label className={styles.switch}>
+       <input type="checkbox" onClick={changeRootCss}/>
+         <span className={styles.slider}></span>
+      </label>
       <SpeechBox isRecording={isRecording} />
     </div>
   )
