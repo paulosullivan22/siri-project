@@ -19,7 +19,7 @@ type Props = IStateProps & IDispatchProps
 const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const { addDialogAction } = actions
   // NOTE: check why this hook triggers infinite recording
-  const [isRecording]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
+  const [isRecording, setIsRecording]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const key: string = withDialog ? 'withDialog' : 'withoutDialog'
 
@@ -50,8 +50,8 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
         }
 
         mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
-          // TODO: check issue with env variables on Gatsby
-          const { transcribed_audio, links } = await fetch(`http://127.0.0.1:5000/audio`, {
+          console.log(process.env.GATSBY_API_URL)
+          const { transcribed_audio, links } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
             method: "POST",
             body: blob
           }).then((res: Response) => res.json())
