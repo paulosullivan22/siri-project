@@ -25,6 +25,7 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   const recordRef: HTMLCollectionOf<Element> = document.getElementsByClassName('record')
   const stopRef: HTMLCollectionOf<Element> = document.getElementsByClassName('stop')
 
+  // NOTE: dark mode by default
   const changeRootCss: () => void = () => {
     document.documentElement.classList.toggle(styles.darkMode)
   }
