@@ -12,7 +12,6 @@ function* rootSaga(): any {
   yield all([...sagas])
 }
 
-
 const createStore: () => Store = () => {
     const sagaMiddleware: any = createSagaMiddleware()
 
