@@ -1,5 +1,12 @@
-import { ADD_DIALOG, SET_SPEECH_BOX_EXPANDED_STATE } from './constants'
+import { ADD_DIALOG, START_API_CALL, SET_SPEECH_BOX_EXPANDED_STATE } from './constants'
 import { IAddDialogAction, IDialogContent, ISetSpeechBoxExpandedAction } from './interfaces'
+
+const startApiCallAction: any = (payload: any) => {
+  return {
+    type: START_API_CALL,
+    payload
+  }
+}
 
 const addDialogAction: IAddDialogAction = (payload: IDialogContent) => {
   return {
@@ -19,5 +26,6 @@ export type Action = ReturnType<typeof addDialogAction | typeof setSpeechBoxExpa
 
 export default {
   addDialogAction,
-  setSpeechBoxExpandedState
+  setSpeechBoxExpandedState,
+  startApiCallAction
 }

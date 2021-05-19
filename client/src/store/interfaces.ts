@@ -21,6 +21,7 @@ export interface IState {
 export interface IActionCreators {
   addDialogAction: IAddDialogAction
   setSpeechBoxExpandedState: ISetSpeechBoxExpandedAction
+  startApiCallAction: any
 }
 
 export interface IDispatchProps {
