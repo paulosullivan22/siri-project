@@ -2,7 +2,7 @@ import { takeLatest } from 'redux-saga/effects'
 
 import { START_API_CALL } from './constants'
 
-function* startApiCall(payload: any): any {
+function* startApiCall(payload: any): Generator {
     console.log("SAGA STARTING")
     console.log(payload)
 
@@ -15,7 +15,7 @@ function* startApiCall(payload: any): any {
     //   console.log(links)
 }
 
-function* watchApiCallStart(): any {
+function* watchApiCallStart(): Generator {
     yield takeLatest(START_API_CALL, startApiCall)
 }
 
