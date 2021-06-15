@@ -75,7 +75,18 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
         <input type="checkbox" onClick={changeRootCss} />
         <span className={styles.slider}></span>
       </label>
+      <p>Hello World, and welcome to my Siri Emulator.</p>
+      <p>This emulator uses advanced speech-to-text machine learning to serialize audio data.</p>
+      <p>Just like Siri, the program uses the web to find answers to whatever you ask.</p>
+      <p>Go ahead, ask a question.</p>
       <SpeechBox isRecording={isRecording} />
+      <div className={styles.footer}>
+        <hr />
+        <p>Made by Paul O'Sullivan ✋</p>
+        <a href="https://github.com/paulosullivan22">Github</a>
+        <a href="https://www.linkedin.com/in/paul-o-sullivan22/">Linkedin</a>
+        <a href="mailto: paulosullivan22@outlook.com">Email</a>
+      </div>
     </div>
   )
 }

@@ -1,12 +1,12 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
+		module.exports = factory(require("/Users/paulosullivan/sites/siri-project/client/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
 	else if(typeof define === 'function' && define.amd)
-		define("lib", ["/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/lodash/merge.js", "react", "react-dom/server"], factory);
+		define("lib", ["/Users/paulosullivan/sites/siri-project/client/node_modules/lodash/merge.js", "react", "react-dom/server"], factory);
 	else if(typeof exports === 'object')
-		exports["lib"] = factory(require("/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
+		exports["lib"] = factory(require("/Users/paulosullivan/sites/siri-project/client/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
 	else
-		root["lib"] = factory(root["/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/lodash/merge.js"], root["react"], root["react-dom/server"]);
+		root["lib"] = factory(root["/Users/paulosullivan/sites/siri-project/client/node_modules/lodash/merge.js"], root["react"], root["react-dom/server"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_lodash_merge__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_react_dom_server__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -35499,14 +35499,20 @@ var _marked = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0
 
 
 
-function startApiCall() {
+function startApiCall(payload) {
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function startApiCall$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           console.log("SAGA STARTING");
+          console.log(payload); // const { transcribed_audio, links } = yield fetch(`${process.env.GATSBY_API_URL}/audio`, {
+          //     method: 'POST',
+          //     body: payload
+          //   }).then((res: Response) => res.json())
+          //   console.log(transcribed_audio)
+          //   console.log(links)
 
-        case 1:
+        case 2:
         case "end":
           return _context.stop();
       }
@@ -35561,9 +35567,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ "lodash/merge":
-/*!**************************************************************************************************************!*\
-  !*** external "/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/lodash/merge.js" ***!
-  \**************************************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** external "/Users/paulosullivan/sites/siri-project/client/node_modules/lodash/merge.js" ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

@@ -11,6 +11,10 @@
 
   --record-button: #ff6768;
   --stop-record-button: #5f5f5f;
+
+  p {
+    color: #f8f8f8;
+  }
 }
 
 :root.darkMode {
@@ -29,6 +33,10 @@
 
   --record-button: #da6a4e;
   --stop-record-button: #767676;
+
+  p {
+    color: black;
+  }
 }
 
 
@@ -44,6 +52,10 @@ body {
     justify-content: center;
     align-items: center;
     flex-flow: column;
+
+    p {
+
+    }
   }
 
   .button {
