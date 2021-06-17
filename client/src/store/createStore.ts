@@ -4,7 +4,6 @@ import { all } from 'redux-saga/effects'
 
 import { reducer, initialState } from './reducer'
 
-
 import sagas from './sagas'
 
 function* rootSaga(): Generator {
@@ -12,12 +11,12 @@ function* rootSaga(): Generator {
 }
 
 const createStore: () => Store = () => {
-    const sagaMiddleware: SagaMiddleware = createSagaMiddleware()
+  const sagaMiddleware: SagaMiddleware = createSagaMiddleware()
 
-    const store: any = reduxCreateStore(reducer, initialState, compose(applyMiddleware(sagaMiddleware)))
+  const store: any = reduxCreateStore(reducer, initialState, compose(applyMiddleware(sagaMiddleware)))
 
-    sagaMiddleware.run(rootSaga)
+  sagaMiddleware.run(rootSaga)
 
-    return store
+  return store
 }
 export default createStore

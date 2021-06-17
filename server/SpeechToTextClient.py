@@ -4,7 +4,7 @@ class SpeechToTextClient:
     def __init__(self):
         self.client = speech.SpeechClient()
 
-    def make_recognize(self, encoded_audio_file):
+    def make_recognize(self, encoded_audio_file):        
         processed_audio = speech.RecognitionAudio(content=encoded_audio_file)
 
         config = speech.RecognitionConfig(

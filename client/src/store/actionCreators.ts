@@ -1,4 +1,4 @@
-import { ADD_DIALOG, START_API_CALL, SET_SPEECH_BOX_EXPANDED_STATE } from './constants'
+import { API_CALL_SUCCESS, START_API_CALL, SET_SPEECH_BOX_EXPANDED_STATE } from './constants'
 import { IAddDialogAction, IDialogContent, ISetSpeechBoxExpandedAction } from './interfaces'
 
 const startApiCallAction: any = (payload: any) => {
@@ -8,12 +8,12 @@ const startApiCallAction: any = (payload: any) => {
   }
 }
 
-const addDialogAction: IAddDialogAction = (payload: IDialogContent) => {
-  return {
-    type: ADD_DIALOG,
-    payload
-  }
-}
+// const addDialogAction: IAddDialogAction = (payload: IDialogContent) => {
+//   return {
+//     type: API_CALL_SUCCESS,
+//     payload
+//   }
+// }
 
 const setSpeechBoxExpandedState: ISetSpeechBoxExpandedAction = (payload: boolean) => {
   return {

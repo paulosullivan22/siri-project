@@ -1,22 +1,30 @@
-import { takeLatest } from 'redux-saga/effects'
+import { put, takeLatest } from 'redux-saga/effects'
 
-import { START_API_CALL } from './constants'
+import { START_API_CALL, API_CALL_SUCCESS, API_CALL_FAILURE } from './constants'
 
 function* startApiCall(payload: any): Generator {
-    console.log("SAGA STARTING")
-    console.log(payload)
+  console.log('SAGA STARTING')
+  console.log(payload)
 
-    // const { transcribed_audio, links } = yield fetch(`${process.env.GATSBY_API_URL}/audio`, {
-    //     method: 'POST',
-    //     body: payload
-    //   }).then((res: Response) => res.json())
+  try {
+    const { transcribed_audio, links }: any = yield fetch(`${process.env.GATSBY_API_URL}/audio`, {
+      method: 'POST',
+      body: payload
+    }).then((res: Response) => res.json())
 
-    //   console.log(transcribed_audio)
-    //   console.log(links)
+    const response: any = { audio: transcribed_audio, links }
+
+    yield put({ type: API_CALL_SUCCESS, payload: response })
+
+    console.log(transcribed_audio)
+    console.log(links)
+  } catch (error) {
+      yield put({ type: API_CALL_FAILURE })
+  }
 }
 
 function* watchApiCallStart(): Generator {
-    yield takeLatest(START_API_CALL, startApiCall)
+  yield takeLatest(START_API_CALL, startApiCall)
 }
 
 export default [watchApiCallStart()]

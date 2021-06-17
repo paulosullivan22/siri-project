@@ -27,9 +27,7 @@
   }
 
   &:active {
-    box-shadow:  0 0 0 var(--dark-box-shadow),
-      0 0 0 var(--light-box-shadow),
-      10px 10px 10px var(--dark-box-shadow) inset,
+    box-shadow: 0 0 0 var(--dark-box-shadow), 0 0 0 var(--light-box-shadow), 10px 10px 10px var(--dark-box-shadow) inset,
       -10px -10px 10px var(--light-box-shadow) inset;
   }
 
@@ -37,9 +35,7 @@
     width: 350px;
     height: 400px;
     background: var(--speech-box-background-expanded);
-    box-shadow:  40px 40px 40px var(--dark-box-shadow),
-      0 0 0 var(--light-box-shadow),
-      0 0 0 var(--dark-box-shadow) inset,
+    box-shadow: 40px 40px 40px var(--dark-box-shadow), 0 0 0 var(--light-box-shadow), 0 0 0 var(--dark-box-shadow) inset,
       2px 2px 2px var(--light-box-shadow) inset;
 
     .buttonsContainer {

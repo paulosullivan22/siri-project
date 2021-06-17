@@ -1,1 +1,65 @@
-{"errors":[],"warnings":[],"namedChunkGroups":{"polyfill":{"chunks":[0,5],"assets":["webpack-runtime-1da13d7b04bb54020ac1.js","webpack-runtime-1da13d7b04bb54020ac1.js.map","polyfill-92b076c0eec7a7a7a6c5.js","polyfill-92b076c0eec7a7a7a6c5.js.map"],"children":{},"childAssets":{}},"app":{"chunks":[0,4,1],"assets":["webpack-runtime-1da13d7b04bb54020ac1.js","webpack-runtime-1da13d7b04bb54020ac1.js.map","framework-06f646d936b841f99ebd.js","framework-06f646d936b841f99ebd.js.map","app-452d76d0a4a275f50ce0.js","app-452d76d0a4a275f50ce0.js.map"],"children":{},"childAssets":{}},"component---src-pages-404-js":{"chunks":[2],"assets":["component---src-pages-404-js-976bcc76e979b9ea8fad.js","component---src-pages-404-js-976bcc76e979b9ea8fad.js.map"],"children":{},"childAssets":{}},"component---src-pages-index-tsx":{"chunks":[6,3],"assets":["styles.636dd3ccb9d149a92e5d.css","styles-c4fa86dfd4ad05097eee.js","styles-c4fa86dfd4ad05097eee.js.map","component---src-pages-index-tsx-2bbb67ded92fe60ae205.js","component---src-pages-index-tsx-2bbb67ded92fe60ae205.js.map"],"children":{},"childAssets":{}}},"assetsByChunkName":{"polyfill":["webpack-runtime-1da13d7b04bb54020ac1.js","polyfill-92b076c0eec7a7a7a6c5.js"],"app":["webpack-runtime-1da13d7b04bb54020ac1.js","framework-06f646d936b841f99ebd.js","app-452d76d0a4a275f50ce0.js"],"component---src-pages-404-js":["component---src-pages-404-js-976bcc76e979b9ea8fad.js"],"component---src-pages-index-tsx":["styles.636dd3ccb9d149a92e5d.css","styles-c4fa86dfd4ad05097eee.js","component---src-pages-index-tsx-2bbb67ded92fe60ae205.js"]}}
+{
+  "errors": [],
+  "warnings": [],
+  "namedChunkGroups": {
+    "polyfill": {
+      "chunks": [0, 5],
+      "assets": [
+        "webpack-runtime-1da13d7b04bb54020ac1.js",
+        "webpack-runtime-1da13d7b04bb54020ac1.js.map",
+        "polyfill-92b076c0eec7a7a7a6c5.js",
+        "polyfill-92b076c0eec7a7a7a6c5.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    },
+    "app": {
+      "chunks": [0, 4, 1],
+      "assets": [
+        "webpack-runtime-1da13d7b04bb54020ac1.js",
+        "webpack-runtime-1da13d7b04bb54020ac1.js.map",
+        "framework-06f646d936b841f99ebd.js",
+        "framework-06f646d936b841f99ebd.js.map",
+        "app-452d76d0a4a275f50ce0.js",
+        "app-452d76d0a4a275f50ce0.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-pages-404-js": {
+      "chunks": [2],
+      "assets": [
+        "component---src-pages-404-js-976bcc76e979b9ea8fad.js",
+        "component---src-pages-404-js-976bcc76e979b9ea8fad.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    },
+    "component---src-pages-index-tsx": {
+      "chunks": [6, 3],
+      "assets": [
+        "styles.636dd3ccb9d149a92e5d.css",
+        "styles-c4fa86dfd4ad05097eee.js",
+        "styles-c4fa86dfd4ad05097eee.js.map",
+        "component---src-pages-index-tsx-2bbb67ded92fe60ae205.js",
+        "component---src-pages-index-tsx-2bbb67ded92fe60ae205.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "assetsByChunkName": {
+    "polyfill": ["webpack-runtime-1da13d7b04bb54020ac1.js", "polyfill-92b076c0eec7a7a7a6c5.js"],
+    "app": [
+      "webpack-runtime-1da13d7b04bb54020ac1.js",
+      "framework-06f646d936b841f99ebd.js",
+      "app-452d76d0a4a275f50ce0.js"
+    ],
+    "component---src-pages-404-js": ["component---src-pages-404-js-976bcc76e979b9ea8fad.js"],
+    "component---src-pages-index-tsx": [
+      "styles.636dd3ccb9d149a92e5d.css",
+      "styles-c4fa86dfd4ad05097eee.js",
+      "component---src-pages-index-tsx-2bbb67ded92fe60ae205.js"
+    ]
+  }
+}

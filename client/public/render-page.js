@@ -35354,17 +35354,19 @@ module.exports = function(originalModule) {
 /*!********************************!*\
   !*** ./src/store/constants.ts ***!
   \********************************/
-/*! exports provided: ADD_DIALOG, SET_SPEECH_BOX_EXPANDED_STATE, START_API_CALL */
+/*! exports provided: SET_SPEECH_BOX_EXPANDED_STATE, START_API_CALL, API_CALL_SUCCESS, API_CALL_FAILURE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_DIALOG", function() { return ADD_DIALOG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_SPEECH_BOX_EXPANDED_STATE", function() { return SET_SPEECH_BOX_EXPANDED_STATE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "START_API_CALL", function() { return START_API_CALL; });
-var ADD_DIALOG = 'ADD_DIALOG';
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CALL_SUCCESS", function() { return API_CALL_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CALL_FAILURE", function() { return API_CALL_FAILURE; });
 var SET_SPEECH_BOX_EXPANDED_STATE = 'SET_SPEECH_BOX_EXPANDED_STATE';
 var START_API_CALL = 'START_API_CALL';
+var API_CALL_SUCCESS = 'API_CALL_SUCCESS';
+var API_CALL_FAILURE = 'API_CALL_FAILURE';
 
 /***/ }),
 
@@ -35443,7 +35445,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var initialState = {
   dialog: [],
-  isSpeechBoxExpanded: false
+  isSpeechBoxExpanded: false,
+  isProcessing: false
 };
 var reducer = function reducer(state, action) {
   if (state === void 0) {
@@ -35454,10 +35457,25 @@ var reducer = function reducer(state, action) {
       payload = action.payload;
 
   switch (type) {
-    case _constants__WEBPACK_IMPORTED_MODULE_1__["ADD_DIALOG"]:
+    case _constants__WEBPACK_IMPORTED_MODULE_1__["START_API_CALL"]:
       {
         return Object.assign({}, state, {
+          isProcessing: true
+        });
+      }
+
+    case _constants__WEBPACK_IMPORTED_MODULE_1__["API_CALL_SUCCESS"]:
+      {
+        return Object.assign({}, state, {
+          isProcessing: false,
           dialog: [].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.dialog), [payload])
+        });
+      }
+
+    case _constants__WEBPACK_IMPORTED_MODULE_1__["API_CALL_FAILURE"]:
+      {
+        return Object.assign({}, state, {
+          isProcessing: false
         });
       }
 
@@ -35500,24 +35518,57 @@ var _marked = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0
 
 
 function startApiCall(payload) {
+  var _yield$fetch$then, transcribed_audio, links, response;
+
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function startApiCall$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          console.log("SAGA STARTING");
-          console.log(payload); // const { transcribed_audio, links } = yield fetch(`${process.env.GATSBY_API_URL}/audio`, {
-          //     method: 'POST',
-          //     body: payload
-          //   }).then((res: Response) => res.json())
-          //   console.log(transcribed_audio)
-          //   console.log(links)
+          console.log('SAGA STARTING');
+          console.log(payload);
+          _context.prev = 2;
+          _context.next = 5;
+          return fetch("http://127.0.0.1:5000" + "/audio", {
+            method: 'POST',
+            body: payload
+          }).then(function (res) {
+            return res.json();
+          });
 
-        case 2:
+        case 5:
+          _yield$fetch$then = _context.sent;
+          transcribed_audio = _yield$fetch$then.transcribed_audio;
+          links = _yield$fetch$then.links;
+          response = {
+            audio: transcribed_audio,
+            links: links
+          };
+          _context.next = 11;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["put"])({
+            type: _constants__WEBPACK_IMPORTED_MODULE_3__["API_CALL_SUCCESS"],
+            payload: response
+          });
+
+        case 11:
+          console.log(transcribed_audio);
+          console.log(links);
+          _context.next = 19;
+          break;
+
+        case 15:
+          _context.prev = 15;
+          _context.t0 = _context["catch"](2);
+          _context.next = 19;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["put"])({
+            type: _constants__WEBPACK_IMPORTED_MODULE_3__["API_CALL_FAILURE"]
+          });
+
+        case 19:
         case "end":
           return _context.stop();
       }
     }
-  }, _marked);
+  }, _marked, null, [[2, 15]]);
 }
 
 function watchApiCallStart() {

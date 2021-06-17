@@ -16,6 +16,7 @@ export interface IDialogContent {
 export interface IState {
   dialog: IDialogContent[]
   isSpeechBoxExpanded: boolean
+  isProcessing: boolean
 }
 
 export interface IActionCreators {

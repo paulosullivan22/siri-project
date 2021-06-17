@@ -21,6 +21,7 @@ const HomePage: FC<Props> = ({ actions, isSpeechBoxExpanded }: Props): ReactElem
   const { addDialogAction } = actions
   const [isRecording, setIsRecording]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
+  // Can this be removed?
   const key: string = withDialog ? 'withDialog' : 'withoutDialog'
 
   const recordRef: HTMLCollectionOf<Element> = document.getElementsByClassName('record')
@@ -53,19 +54,20 @@ const HomePage: FC<Props> = ({ actions, isSpeechBoxExpanded }: Props): ReactElem
         mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
           actions.startApiCallAction(blob)
 
-          const { transcribed_audio, links } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
-            method: 'POST',
-            body: blob
-          }).then((res: Response) => res.json())
+          // const { transcribed_audio, links } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
+          //   method: 'POST',
+          //   body: blob
+          // }).then((res: Response) => res.json())
 
           setWithDialog(true)
-          addDialogAction({ audio: transcribed_audio, links })
+          // addDialogAction({ audio: transcribed_audio, links })
         }
       }
 
       const onMediaError: (error: MediaStreamError) => void = (error: MediaStreamError) => {
         console.error(error)
       }
+      
       navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
     }
   })
@@ -78,8 +80,12 @@ const HomePage: FC<Props> = ({ actions, isSpeechBoxExpanded }: Props): ReactElem
       </label>
       <div className={styles.textContainer}>
         <p className={styles.introText}>Hello World, and welcome to my Siri Emulator.</p>
-        <p className={styles.introText}>This emulator uses advanced speech-to-text machine learning to serialize audio data.</p>
-        <p className={styles.introText}>Just like Siri, the program uses the web to find answers to whatever you ask.</p>
+        <p className={styles.introText}>
+          This emulator uses advanced speech-to-text machine learning to serialize audio data.
+        </p>
+        <p className={styles.introText}>
+          Just like Siri, the program uses the web to find answers to whatever you ask.
+        </p>
         <p className={styles.introText}>Go ahead, click the box below to start.</p>
       </div>
       <div className={styles.speechBoxContainer}>
@@ -100,7 +106,7 @@ const HomePage: FC<Props> = ({ actions, isSpeechBoxExpanded }: Props): ReactElem
 
 function mapStateToProps(state: IState): Pick<IState, 'isSpeechBoxExpanded'> {
   return {
-    isSpeechBoxExpanded: state.isSpeechBoxExpanded,
+    isSpeechBoxExpanded: state.isSpeechBoxExpanded
   }
 }
 
