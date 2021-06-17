@@ -76,11 +76,15 @@ const HomePage: FC<Props> = ({ actions, isSpeechBoxExpanded }: Props): ReactElem
         <input type="checkbox" onClick={changeRootCss} />
         <span className={styles.slider}></span>
       </label>
-      <p className={styles.introText}>Hello World, and welcome to my Siri Emulator.</p>
-      <p className={styles.introText}>This emulator uses advanced speech-to-text machine learning to serialize audio data.</p>
-      <p className={styles.introText}>Just like Siri, the program uses the web to find answers to whatever you ask.</p>
-      <p className={styles.introText}>Go ahead, click the box below to start.</p>
-      <SpeechBox isRecording={isRecording} />
+      <div className={styles.textContainer}>
+        <p className={styles.introText}>Hello World, and welcome to my Siri Emulator.</p>
+        <p className={styles.introText}>This emulator uses advanced speech-to-text machine learning to serialize audio data.</p>
+        <p className={styles.introText}>Just like Siri, the program uses the web to find answers to whatever you ask.</p>
+        <p className={styles.introText}>Go ahead, click the box below to start.</p>
+      </div>
+      <div className={styles.speechBoxContainer}>
+        <SpeechBox isRecording={isRecording} />
+      </div>
       <div className={styles.footer}>
         <hr />
         <p>Made by Paul O'Sullivan ✋</p>

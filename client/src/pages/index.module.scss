@@ -51,16 +51,21 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-flow: column;
 
-    .introText {
-      opacity: 1;
-      margin-bottom: 8px;
-      transition: 0.3s;
-      max-width: 400px;
-      text-align: center;
+    .textContainer {
+      margin-top: 60px;
+      height: 200px;
+      transition: 0.8s;
+
+      .introText {
+        opacity: 0.8;
+        margin-bottom: 6px;
+        transition: 0.3s;
+        max-width: 600px;
+        text-align: center;
+      }
     }
 
     .footer {
@@ -69,6 +74,11 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      p {
+        margin-top: 6px;
+        margin-bottom: 6px;
+      }
       
       hr {
         border: none;
@@ -89,9 +99,14 @@ body {
     }
 
     &.speechBoxExpanded {
-      .introText {
-        opacity: 0;
+      .textContainer {
         height: 0;
+
+        .introText {
+          // height: 0;
+          opacity: 0;
+
+        }
       }
     }
   }
