@@ -2,21 +2,22 @@ import React, { Dispatch, FC, ReactElement, SetStateAction, useEffect, useState 
 import MediaStreamRecorder from 'msr'
 import { bindActionCreators, Dispatch as reduxDispatch } from 'redux'
 import { connect } from 'react-redux'
+import cx from 'classnames'
 
 import actions from '../store/actionCreators'
-import { IState, IDispatchProps, IDialogContent } from '../store/interfaces'
+import { IState, IDispatchProps } from '../store/interfaces'
 import SpeechBox from '../components/SpeechBox'
 import { IMediaConstraints } from './interfaces'
 
 import styles from './index.module.scss'
 
 interface IStateProps {
-  dialog: IDialogContent[]
+  isSpeechBoxExpanded: boolean
 }
 
 type Props = IStateProps & IDispatchProps
 
-const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
+const HomePage: FC<Props> = ({ actions, isSpeechBoxExpanded }: Props): ReactElement => {
   const { addDialogAction } = actions
   const [isRecording, setIsRecording]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
   const [withDialog, setWithDialog]: [boolean, Dispatch<SetStateAction<boolean>>] = useState<boolean>(false)
@@ -70,30 +71,32 @@ const HomePage: FC<Props> = ({ actions }: Props): ReactElement => {
   })
 
   return (
-    <div className={styles.container} key={key}>
+    <div className={cx(styles.container, { [styles.speechBoxExpanded]: isSpeechBoxExpanded })} key={key}>
       <label className={styles.switch}>
         <input type="checkbox" onClick={changeRootCss} />
         <span className={styles.slider}></span>
       </label>
-      <p>Hello World, and welcome to my Siri Emulator.</p>
-      <p>This emulator uses advanced speech-to-text machine learning to serialize audio data.</p>
-      <p>Just like Siri, the program uses the web to find answers to whatever you ask.</p>
-      <p>Go ahead, ask a question.</p>
+      <p className={styles.introText}>Hello World, and welcome to my Siri Emulator.</p>
+      <p className={styles.introText}>This emulator uses advanced speech-to-text machine learning to serialize audio data.</p>
+      <p className={styles.introText}>Just like Siri, the program uses the web to find answers to whatever you ask.</p>
+      <p className={styles.introText}>Go ahead, click the box below to start.</p>
       <SpeechBox isRecording={isRecording} />
       <div className={styles.footer}>
         <hr />
         <p>Made by Paul O'Sullivan ✋</p>
-        <a href="https://github.com/paulosullivan22">Github</a>
-        <a href="https://www.linkedin.com/in/paul-o-sullivan22/">Linkedin</a>
-        <a href="mailto: paulosullivan22@outlook.com">Email</a>
+        <div className={styles.footerLinks}>
+          <a href="https://github.com/paulosullivan22">Github</a>
+          <a href="https://www.linkedin.com/in/paul-o-sullivan22/">Linkedin</a>
+          <a href="mailto: paulosullivan22@outlook.com">Email</a>
+        </div>
       </div>
     </div>
   )
 }
 
-function mapStateToProps(state: IState): Pick<IState, 'dialog'> {
+function mapStateToProps(state: IState): Pick<IState, 'isSpeechBoxExpanded'> {
   return {
-    dialog: state.dialog
+    isSpeechBoxExpanded: state.isSpeechBoxExpanded,
   }
 }
 
