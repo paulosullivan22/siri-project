@@ -52,12 +52,14 @@ const HomePage: FC<Props> = ({ actions, isSpeechBoxExpanded }: Props): ReactElem
         }
 
         mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
-          actions.startApiCallAction(blob)
+          // await actions.startApiCallAction(blob)
 
-          // const { transcribed_audio, links } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
-          //   method: 'POST',
-          //   body: blob
-          // }).then((res: Response) => res.json())
+          console.log(blob)
+
+          const { transcribed_audio, links } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
+            method: 'POST',
+            body: blob
+          }).then((res: Response) => res.json())
 
           setWithDialog(true)
           // addDialogAction({ audio: transcribed_audio, links })

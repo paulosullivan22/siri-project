@@ -1,5 +1,5 @@
 var plugins = [{
-      plugin: require('/Users/paulosullivan/sites/siri-project/client/gatsby-ssr'),
+      plugin: require('/Users/paulosullivan/repos/practice/siri-project-gatsby/client/gatsby-ssr'),
       options: {"plugins":[]},
     }]
 // During bootstrap, we write requires at top of this file which looks like:

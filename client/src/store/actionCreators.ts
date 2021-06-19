@@ -22,10 +22,9 @@ const setSpeechBoxExpandedState: ISetSpeechBoxExpandedAction = (payload: boolean
   }
 }
 
-export type Action = ReturnType<typeof addDialogAction | typeof setSpeechBoxExpandedState>
+export type Action = ReturnType<typeof startApiCallAction | typeof setSpeechBoxExpandedState>
 
 export default {
-  addDialogAction,
-  setSpeechBoxExpandedState,
-  startApiCallAction
+  startApiCallAction,
+  setSpeechBoxExpandedState
 }

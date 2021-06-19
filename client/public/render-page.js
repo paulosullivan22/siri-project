@@ -1,12 +1,12 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("/Users/paulosullivan/sites/siri-project/client/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
+		module.exports = factory(require("/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
 	else if(typeof define === 'function' && define.amd)
-		define("lib", ["/Users/paulosullivan/sites/siri-project/client/node_modules/lodash/merge.js", "react", "react-dom/server"], factory);
+		define("lib", ["/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/lodash/merge.js", "react", "react-dom/server"], factory);
 	else if(typeof exports === 'object')
-		exports["lib"] = factory(require("/Users/paulosullivan/sites/siri-project/client/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
+		exports["lib"] = factory(require("/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/lodash/merge.js"), require("react"), require("react-dom/server"));
 	else
-		root["lib"] = factory(root["/Users/paulosullivan/sites/siri-project/client/node_modules/lodash/merge.js"], root["react"], root["react-dom/server"]);
+		root["lib"] = factory(root["/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/lodash/merge.js"], root["react"], root["react-dom/server"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_lodash_merge__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_react_dom_server__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -35618,9 +35618,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ "lodash/merge":
-/*!**********************************************************************************************!*\
-  !*** external "/Users/paulosullivan/sites/siri-project/client/node_modules/lodash/merge.js" ***!
-  \**********************************************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** external "/Users/paulosullivan/repos/practice/siri-project-gatsby/client/node_modules/lodash/merge.js" ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
