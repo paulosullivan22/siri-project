@@ -3,6 +3,7 @@ import MediaStreamRecorder from 'msr'
 import { bindActionCreators, Dispatch as reduxDispatch } from 'redux'
 import { connect } from 'react-redux'
 import cx from 'classnames'
+import Recorder from 'recorder-js';
 
 import actions from '../store/actionCreators'
 import { IState, IDispatchProps } from '../store/interfaces'
@@ -26,6 +27,7 @@ const HomePage: FC<Props> = ({ actions, isSpeechBoxExpanded }: Props): ReactElem
 
   const recordRef: HTMLCollectionOf<Element> = document.getElementsByClassName('record')
   const stopRef: HTMLCollectionOf<Element> = document.getElementsByClassName('stop')
+  const playRef: HTMLCollectionOf<Element> = document.getElementsByClassName('play')
 
   // NOTE: dark mode by default
   const changeRootCss: () => void = () => {
@@ -33,45 +35,83 @@ const HomePage: FC<Props> = ({ actions, isSpeechBoxExpanded }: Props): ReactElem
   }
 
   useEffect(() => {
-    if (navigator.mediaDevices.getUserMedia && navigator.getUserMedia) {
-      const mediaConstraints: IMediaConstraints = {
-        audio: true
-      }
+    navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      const mediaRecorder = new MediaRecorder(stream);
 
-      const onMediaSuccess: (stream: MediaStream) => void = (stream: MediaStream) => {
-        const mediaRecorder = new MediaStreamRecorder(stream)
-        mediaRecorder.audioChannels = 1
-        mediaRecorder.mimeType = 'audio/wav'
+      const audioChunks: any = [];
 
-        recordRef[0].onclick = (): void => {
-          mediaRecorder.start(10000)
-        }
+      mediaRecorder.addEventListener("dataavailable", (event: any) => {
+        audioChunks.push(event.data);
+      });
 
-        stopRef[0].onclick = (): void => {
-          mediaRecorder.stop()
-        }
+      mediaRecorder.addEventListener("stop", async () => {
+        const audioBlob = new Blob(audioChunks, { 'type': 'audio/wav' });
+        const audioUrl = URL.createObjectURL(audioBlob);
+        const audio = new Audio(audioUrl);
 
-        mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
-          // await actions.startApiCallAction(blob)
+        playRef[0].onclick = (): void => {
+          console.log("playing")
+          audio.play()
+          }
 
-          console.log(blob)
+          const formData = new FormData();
+          formData.append('audio-file', audioBlob);
 
           const { transcribed_audio, links } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
             method: 'POST',
-            body: blob
+            body: formData
           }).then((res: Response) => res.json())
+      });
 
-          setWithDialog(true)
-          // addDialogAction({ audio: transcribed_audio, links })
+      recordRef[0].onclick = (): void => {
+        mediaRecorder.start();
         }
-      }
 
-      const onMediaError: (error: MediaStreamError) => void = (error: MediaStreamError) => {
-        console.error(error)
-      }
+        stopRef[0].onclick = (): void => {
+          mediaRecorder.stop();
+        }
+    });
+    
+    // if (navigator.mediaDevices.getUserMedia && navigator.getUserMedia) {
+    //   const mediaConstraints: IMediaConstraints = {
+    //     audio: true
+    //   }
+
+    //   const onMediaSuccess: (stream: MediaStream) => void = (stream: MediaStream) => {
+    //     const mediaRecorder = new MediaStreamRecorder(stream)
+    //     mediaRecorder.audioChannels = 1
+    //     mediaRecorder.mimeType = 'audio/wav'
+
+    //     recordRef[0].onclick = (): void => {
+    //       mediaRecorder.start(10000)
+    //     }
+
+    //     stopRef[0].onclick = (): void => {
+    //       mediaRecorder.stop()
+    //     }
+
+    //     mediaRecorder.ondataavailable = async (blob: Blob): Promise<void> => {
+    //       // await actions.startApiCallAction(blob)
+
+    //       console.log(blob)
+
+    //       const { transcribed_audio, links } = await fetch(`${process.env.GATSBY_API_URL}/audio`, {
+    //         method: 'POST',
+    //         body: blob
+    //       }).then((res: Response) => res.json())
+
+    //       setWithDialog(true)
+    //       // addDialogAction({ audio: transcribed_audio, links })
+    //     }
+    //   }
+
+    //   const onMediaError: (error: MediaStreamError) => void = (error: MediaStreamError) => {
+    //     console.error(error)
+    //   }
       
-      navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
-    }
+    //   navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
+    // }
   })
 
   return (
@@ -92,6 +132,7 @@ const HomePage: FC<Props> = ({ actions, isSpeechBoxExpanded }: Props): ReactElem
       </div>
       <div className={styles.speechBoxContainer}>
         <SpeechBox isRecording={isRecording} />
+        <button className="play">play</button>
       </div>
       <div className={styles.footer}>
         <hr />
@@ -114,7 +155,7 @@ function mapStateToProps(state: IState): Pick<IState, 'isSpeechBoxExpanded'> {
 
 function mapDispatchToProps(dispatch: reduxDispatch): IDispatchProps {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch) as any
   }
 }
 
